@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:layout_weight="1"
+    android:background="@color/KsBlueDim"
+    app:ignore="NamespaceTypo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuHeader"
+        android:orientation="horizontal"
+        android:background="@color/KsWhite"
+
+        android:elevation="6dp"
+        >
+
+        <ImageView android:id="@+id/menuHeaderImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ks54logo2"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:layout_gravity="left"
+            android:layout_weight="0"/>
+
+        <TextView android:id="@+id/menuHeaderText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/TextCabinetListHeader"
+            android:textColor="@color/KsBlueDim"
+            android:autoSizeTextType="uniform"
+            android:gravity="center_vertical"/>
+
+        <ImageButton
+            android:id="@+id/menuHeaderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="?android:selectableItemBackground"
+            android:paddingVertical="10dp"
+            android:scaleType="fitCenter"
+
+            android:src="@drawable/menuheaderbutton" />
+
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menuHeader">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                card_view:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/KsLightBlue"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Cabinet401Name"
+                        android:textSize="24sp"
+                        android:textColor="@color/KsWhite"
+                        android:gravity="center"
+                        android:background="@color/KsBlue"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="3dp"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Cabinet"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:layout_marginRight="3dp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Teacher"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/c401"/>
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/teachertemplate"/>
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view2"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                card_view:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/KsLightBlue"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Cabinet402Name"
+                        android:textSize="24sp"
+                        android:textColor="@color/KsWhite"
+                        android:gravity="center"
+                        android:background="@color/KsBlue"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="3dp"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Cabinet"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:layout_marginRight="3dp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Teacher"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/c402"/>
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/teachertemplate"/>
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view3"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                card_view:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/KsLightBlue"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Cabinet403Name"
+                        android:textSize="24sp"
+                        android:textColor="@color/KsWhite"
+                        android:gravity="center"
+                        android:background="@color/KsBlue"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="3dp"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Cabinet"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:layout_marginRight="3dp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Teacher"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/c403"/>
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/teachertemplate"/>
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view4"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                card_view:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/KsLightBlue"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Cabinet404Name"
+                        android:textSize="24sp"
+                        android:textColor="@color/KsWhite"
+                        android:gravity="center"
+                        android:background="@color/KsBlue"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="3dp"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Cabinet"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:layout_marginRight="3dp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Teacher"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/c404"/>
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/teachertemplate"/>
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view5"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                card_view:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/KsLightBlue"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Cabinet405Name"
+                        android:textSize="24sp"
+                        android:textColor="@color/KsWhite"
+                        android:gravity="center"
+                        android:background="@color/KsBlue"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="3dp"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Cabinet"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:layout_marginRight="3dp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Teacher"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/c405"/>
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/teachertemplate"/>
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view6"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                card_view:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/KsLightBlue"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Cabinet406Name"
+                        android:textSize="24sp"
+                        android:textColor="@color/KsWhite"
+                        android:gravity="center"
+                        android:background="@color/KsBlue"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="3dp"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Cabinet"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:layout_marginRight="3dp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Teacher"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/c406"/>
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/teachertemplate"/>
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view7"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                card_view:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/KsLightBlue"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Cabinet407Name"
+                        android:textSize="24sp"
+                        android:textColor="@color/KsWhite"
+                        android:gravity="center"
+                        android:background="@color/KsBlue"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="3dp"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Cabinet"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:layout_marginRight="3dp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Teacher"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/c407"/>
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/teachertemplate"/>
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view8"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                card_view:cardCornerRadius="10dp"
+                app:cardBackgroundColor="@color/KsLightBlue"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Cabinet408Name"
+                        android:textSize="24sp"
+                        android:textColor="@color/KsWhite"
+                        android:gravity="center"
+                        android:background="@color/KsBlue"
+                        />
+
+                    <LinearLayout
+                        android:layout_marginTop="3dp"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Cabinet"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:layout_marginRight="3dp"
+                            android:gravity="center"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Teacher"
+                            android:textSize="24sp"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_marginRight="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/c408"/>
+
+                        <ImageView
+                            android:layout_marginTop="3dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="170dp"
+                            android:src="@drawable/teachertemplate"/>
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

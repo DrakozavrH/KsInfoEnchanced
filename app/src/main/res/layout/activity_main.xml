@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/menuHeader"
+    android:orientation="horizontal"
+    android:background="@color/KsWhite"
+
+    android:elevation="6dp"
+    >
+
+    <ImageView android:id="@+id/menuHeaderImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ks54logo2"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:layout_gravity="left"
+        android:layout_weight="0"/>
+
+    <TextView android:id="@+id/menuHeaderText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="@string/TextInfoHeader"
+        android:textColor="@color/KsBlueDim"
+        android:autoSizeTextType="uniform"
+        android:gravity="center_vertical"/>
+
+    <ImageButton
+        android:id="@+id/menuHeaderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0"
+        android:background="?android:selectableItemBackground"
+        android:paddingVertical="10dp"
+        android:scaleType="fitCenter"
+
+        android:src="@drawable/menuheaderbutton" />
+
+
+
+</LinearLayout>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/menuHeader">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="145dp"
+                android:src="@drawable/ks54biglogo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/collegeInfo"
+                android:textSize="24sp"
+                android:layout_marginHorizontal="5dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="274dp"
+                android:src="@drawable/infoimage1" />
+
+
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+
+
+
+
+</RelativeLayout>

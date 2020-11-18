@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="KsOrange">#FF7900</color>
+    <color name="KsBlue">#00277B</color>
+    <color name="KsLightBlue">#0360B1</color>
+    <color name="KsBlack">#000000</color>
+    <color name="KsWhite">#FFFFFF</color>
+
+
+    <color name="KsBlueDim">#0C1B33</color>
+    <color name="KsLight">#FFD5C2</color>
+    <color name="KsGray">#494949</color>
+    <color name="KsOrangeDim">#F28F3B</color>
+
+</resources>
