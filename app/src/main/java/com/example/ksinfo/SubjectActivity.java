@@ -77,6 +77,7 @@ public class SubjectActivity extends AppCompatActivity {
 
     //Test
 
+    //Test2
 
     private void SetContent(){
         Intent intent = getIntent();
