@@ -13,7 +13,6 @@
     android:id="@+id/menuHeader"
     android:orientation="horizontal"
     android:background="@color/KsWhite"
-
     android:elevation="6dp"
     >
 
@@ -43,14 +42,9 @@
         android:background="?android:selectableItemBackground"
         android:paddingVertical="10dp"
         android:scaleType="fitCenter"
-
         android:src="@drawable/menuheaderbutton" />
 
-
-
 </LinearLayout>
-
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -80,19 +74,7 @@
                 android:layout_height="274dp"
                 android:src="@drawable/infoimage1" />
 
-
-
-
         </LinearLayout>
-
-
-
     </ScrollView>
-
-
-
-
-
-
 
 </RelativeLayout>
