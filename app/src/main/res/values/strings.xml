@@ -6,6 +6,48 @@
     <string name="TextScheduleHeader">Расписание</string>
     <string name="TextSubjectListHeader">Предметы</string>
     <string name="TextCabinetListHeader">Кабинеты</string>
+    <string name="TextLoginHeader">Логин</string>
+    <string name="TextProfileHeader">Личный кабинет</string>
+    <string name="TextSettingsHeader">Настройки</string>
+    <string name="TextNotificationsHeader">Уведомления</string>
+    <string name="TextMessagesHeader">Сообщения</string>
+    <string name="TextSendingMessagesHeader">Отправка сообщений</string>
+    <string name="TextChangesHeader">Замены</string>
+    <string name="TextClubsHeader">Кружки</string>
+    <string name="TextMyClubsHeader">Мои кружки</string>
+    <string name="TextMyDocumentsHeader">Мои документы</string>
+    <string name="TextMyNotesHeader">Мои справки</string>
+    <string name="TextOrderNotesHeader">Заказ справки</string>
+    <string name="TextAskQuestionHeader">Задать вопрос</string>
+
+
+
+    <string name="LoginHint">Логин</string>
+    <string name="PasswordHint">Пароль</string>
+    <string name="LoginButtonText">Вход</string>
+    <string name="ForgotPassword">Забыли пароль?</string>
+    <string name="NoRegistration">Продолжить без регистрации</string>
+
+
+    <string name="ProfileNameGuest">Гость</string>
+    <string name="ProfileDescriptionStudent">Студент группы</string>
+    <string name="ProfileDescriptionAdmin">Администратор</string>
+    <string name="ProfileButtonText">Зарегистрироваться</string>
+    <string name="ProfileInitialGroup">3ИСП9-4</string>
+
+    <string name="WeekInfoHeader">Неделя</string>
+    <string name="WeekInfoInitialText">Знаменатель</string>
+    <string name="TodayInfoHeader">Сегодня</string>
+    <string name="DinnerInfoHeader">Обед</string>
+    <string name="DinnerInfoTextDefault">Нет информации</string>
+
+    <string name="EventsButtonText">Мероприятия</string>
+    <string name="NewsButtonText">Новости</string>
+    <string name="NoNews">Новости</string>
+
+
+
+
 
     <string name="Cabinet">Кабинет</string>
     <string name="Teacher">Преподаватель</string>

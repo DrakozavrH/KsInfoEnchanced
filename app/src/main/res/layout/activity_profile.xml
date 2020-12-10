@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@color/KsBlueDim"
+    >
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuHeader"
+        android:orientation="horizontal"
+        android:background="@color/KsBlue"
+        android:elevation="6dp"
+        >
+
+        <ImageView android:id="@+id/menuHeaderImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/leftmenuicon"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:layout_gravity="left"
+            android:layout_weight="0"/>
+
+        <TextView android:id="@+id/menuHeaderText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/TextProfileHeader"
+            android:textColor="@color/KsWhite"
+            android:autoSizeTextType="uniform"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/menuHeaderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="?android:selectableItemBackground"
+            android:paddingVertical="10dp"
+            android:scaleType="fitCenter"
+
+            android:src="@drawable/menuheaderbuttonwhite" />
+    </LinearLayout>
+
+
+
+    <ScrollView
+        android:layout_below="@id/menuHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:id="@+id/Profile"
+                android:background="@color/KsBlue"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:layout_below="@id/menuHeader"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+
+                <ImageView
+                    android:src="@drawable/userimage"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"/>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/userNameText"
+                        android:text="@string/ProfileNameGuest"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="32sp"
+                        android:textColor="@color/KsWhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/ProfileDescriptionText"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="24sp"
+                            android:text="@string/ProfileDescriptionStudent"
+                            android:textColor="@color/KsWhite"
+                            android:gravity="center"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:id="@+id/ProfileDescriptionTextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:textSize="20sp"
+                            android:text="@string/ProfileInitialGroup"
+                            android:textColor="@color/KsOrange"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:layout_height="match_parent"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/WeekInfoLayout"
+                android:background="@color/KsBlue"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical"
+                android:layout_below="@id/Profile"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/KsWhite"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/WeekInfoHeader"/>
+
+                <TextView
+                    android:id="@+id/WeekInfoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/KsWhite"
+                    android:textSize="28sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/WeekInfoInitialText"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/TodayInfoLayout"
+                android:background="@color/KsBlue"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/KsWhite"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/TodayInfoHeader"/>
+
+                <TextView
+                    android:id="@+id/TodayInfoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/KsWhite"
+                    android:textSize="28sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/WeekInfoInitialText"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/DinnerInfoLayout"
+                android:background="@color/KsBlue"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/KsWhite"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/DinnerInfoHeader"/>
+
+                <TextView
+                    android:id="@+id/DinnerInfoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/KsWhite"
+                    android:textSize="28sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/DinnerInfoTextDefault"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/EventsButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_marginRight="2dp"
+                    android:text="@string/EventsButtonText"
+                    android:textColor="@color/KsWhite"
+                    android:textSize="24dp"
+                    android:background="@color/KsBlue"
+                    android:layout_height="match_parent"/>
+
+                <Button
+                    android:id="@+id/NewsButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_marginLeft="2dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/NewsButtonText"
+                    android:textColor="@color/KsWhite"
+                    android:textSize="24dp"
+                    android:background="@color/KsLightBlue" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/NewsOrEventsList"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/NoNewsOrEventsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="32sp"
+                    android:textColor="@color/KsWhite"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+
+</RelativeLayout>
