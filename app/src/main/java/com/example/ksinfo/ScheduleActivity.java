@@ -57,7 +57,6 @@ public class ScheduleActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
 
-
             }
         });
 

@@ -47,7 +47,10 @@
 
 
 
-
+    <string name="ZeroNotificationsText">У вас нет новых уведомлений</string>
+    <string name="ZeroChangesText">Замены не найдены</string>
+    <string name="ZeroMyClubsText">Вы не зачислены ни в одну секцию дополнительного образования</string>
+    <string name="MyDocumentsUnavailableText">Загрузка файлов временно недоступна</string>
 
     <string name="Cabinet">Кабинет</string>
     <string name="Teacher">Преподаватель</string>
