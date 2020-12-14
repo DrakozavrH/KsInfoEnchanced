@@ -52,6 +52,26 @@
     <string name="ZeroMyClubsText">Вы не зачислены ни в одну секцию дополнительного образования</string>
     <string name="MyDocumentsUnavailableText">Загрузка файлов временно недоступна</string>
 
+
+    <string name="LeftMenuDefaultText">Ничего</string>
+    <string name="LeftMenuProfileText">Личный кабинет</string>
+    <string name="LeftMenuNotificationsText">Уведомления</string>
+    <string name="LeftMenuScheduleText">Расписание</string>
+    <string name="LeftMenuChangesText">Замены</string>
+    <string name="LeftMenuEducationText">Доп. Образование</string>
+    <string name="LeftMenuClubsText">Кружки</string>
+    <string name="LeftMenuMyClubsText">Мои кружки</string>
+    <string name="LeftMenuMyDocumentsText">Мои документы</string>
+    <string name="LeftMenuMyNotesText">Мои справки</string>
+    <string name="LeftMenuOrderNotesText">Заказать справку</string>
+    <string name="LeftMenuAskQuestionText">Задать вопрос</string>
+    <string name="LeftMenuStudsovetText">Студсовет</string>
+    <string name="LeftMenuPsychologistText">Психолог</string>
+
+
+
+
+
     <string name="Cabinet">Кабинет</string>
     <string name="Teacher">Преподаватель</string>
 

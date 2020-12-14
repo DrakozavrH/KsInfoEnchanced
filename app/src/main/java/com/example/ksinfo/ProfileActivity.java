@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,10 +14,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.ksinfo.Adapters.MyAdapter;
+import com.example.ksinfo.Model.Item;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -28,6 +39,12 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView TodayInfoText;
 
     private TextView NoNewsOrEventsText;
+
+
+    RecyclerView list;
+    RecyclerView.LayoutManager layoutManager;
+    List<Item> items = new ArrayList<>();
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,10 +98,25 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(Gravity.LEFT);
+
+                list =(RecyclerView) findViewById(R.id.recycler);
+
+                if(list.getChildCount() == 0){
+
+
+                    list.setHasFixedSize(true);
+                    layoutManager = new LinearLayoutManager(getBaseContext());
+                    list.setLayoutManager(layoutManager);
+                    setData();
+                }
+
+
             }
         });
 
         SetContent();
+
+
 
     }
 
@@ -128,5 +160,37 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
+
+
     }
+
+
+
+
+    private void setData() {
+
+        for (int i = 0; i < 20 ; i++) {
+
+            if(i%2 ==0){
+                Item item = new Item("Доп. образование","Child item" + (i+1),true,R.drawable.notificontest3,1);
+                items.add(item);
+            }else{
+                Item item = new Item("Доп. образование","",false,R.drawable.notificontest4,2);
+                items.add(item);
+            }
+
+        }
+
+        MyAdapter adapter = new MyAdapter(items);
+        list.setAdapter(adapter);
+
+
+    }
+
+
+
+
+
+
+
 }

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:layout_marginBottom="1dp"
+    android:background="@color/KsLightBlue">
+
+
+    <LinearLayout
+        android:id="@+id/mainButton"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+
+        <ImageView
+            android:id="@+id/iconView"
+            android:layout_width="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/notificontest4"
+            android:layout_height="40dp"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="180dp"
+            android:layout_height="match_parent"
+
+            android:textColor="@color/KsWhite"
+            android:text="@string/LeftMenuEducationText"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            />
+
+        <RelativeLayout
+            android:id="@+id/button"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:layout_alignParentTop="true"
+            android:layout_width="40dp"
+            android:layout_height="40dp">
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_baseline_arrow_forward_ios_24"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+    <com.github.aakira.expandablelayout.ExpandableLinearLayout
+        android:id="@+id/expandableLayout"
+        android:layout_below="@id/mainButton"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ael_duration="400"
+        app:ael_expanded="false"
+        app:ael_interpolator="bounce"
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@color/KsBlue"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/button"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:id="@+id/iconViewChild"
+                android:layout_width="60dp"
+                android:src="@drawable/notificontest3"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/textViewChild"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/KsWhite"
+
+                android:text="@string/LeftMenuDefaultText"
+                android:textSize="30sp"
+                android:gravity="center_vertical"
+                />
+
+
+
+        </LinearLayout>
+
+    </com.github.aakira.expandablelayout.ExpandableLinearLayout>
+
+
+</RelativeLayout>
