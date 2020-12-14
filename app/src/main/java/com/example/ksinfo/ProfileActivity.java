@@ -3,13 +3,16 @@ package com.example.ksinfo;
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -41,6 +44,9 @@ public class ProfileActivity extends AppCompatActivity {
         final Button EventsButton = findViewById(R.id.EventsButton);
         final Button NewsButton = findViewById(R.id.NewsButton);
 
+
+
+
         EventsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +70,17 @@ public class ProfileActivity extends AppCompatActivity {
 
                 NoNewsOrEventsText.setText("Нет данных о новостях");
 
+            }
+        });
+
+
+        ImageView headerImage = findViewById(R.id.menuHeaderImage);
+        final DrawerLayout drawerLayout = findViewById(R.id.ProfileDrawerLayout);
+
+        headerImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(Gravity.LEFT);
             }
         });
 

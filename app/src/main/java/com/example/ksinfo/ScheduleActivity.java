@@ -45,90 +45,6 @@ public class ScheduleActivity extends AppCompatActivity {
             subjectButtons[i] = (Button)findViewById(id);
         }
 
-        for (Button button: subjectButtons)
-        {
-            if(button != null) {
-
-
-                switch (String.valueOf(button.getText())) {
-
-                    case "Осн.фил":
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(ScheduleActivity.this, SubjectActivity.class);
-                                intent.putExtra("Subject", "sPhil");
-                                startActivity(intent);
-                            }
-                        });
-                        break;
-                    case "01.03. ИСП":
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(ScheduleActivity.this, SubjectActivity.class);
-                                intent.putExtra("Subject", "s0103");
-                                startActivity(intent);
-                            }
-                        });
-                        break;
-                    case "04.02. ИСП":
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(ScheduleActivity.this, SubjectActivity.class);
-                                intent.putExtra("Subject", "s0402");
-                                startActivity(intent);
-                            }
-                        });
-                        break;
-                    case "11.01. ИСП":
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(ScheduleActivity.this, SubjectActivity.class);
-                                intent.putExtra("Subject", "s1101");
-                                startActivity(intent);
-                            }
-                        });
-                        break;
-                    case "БЖ":
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(ScheduleActivity.this, SubjectActivity.class);
-                                intent.putExtra("Subject", "sBj");
-                                startActivity(intent);
-                            }
-                        });
-                        break;
-                    case "01.01. ИСП":
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(ScheduleActivity.this, SubjectActivity.class);
-                                intent.putExtra("Subject", "s0101");
-                                startActivity(intent);
-                            }
-                        });
-                        break;
-                    default:
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(ScheduleActivity.this, SubjectActivity.class);
-                                intent.putExtra("Subject", "default");
-                                startActivity(intent);
-                            }
-                        });
-
-
-                }
-
-            }
-
-        }
-
 
     }
 
@@ -140,17 +56,7 @@ public class ScheduleActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if(which==0){
-                    Intent intent = new Intent(ScheduleActivity.this,MainActivity.class);
-                    startActivity(intent);
-                }else if(which ==1){
-                    Intent intent = new Intent(ScheduleActivity.this,CabinetListActivity.class);
-                    startActivity(intent);
 
-                }else if(which ==2){
-                    Intent intent = new Intent(ScheduleActivity.this,SubjectListActivity.class);
-                    startActivity(intent);
-                }
 
             }
         });

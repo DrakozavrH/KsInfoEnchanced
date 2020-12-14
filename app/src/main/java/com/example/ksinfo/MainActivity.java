@@ -38,18 +38,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if(which==0){
-                    Intent intent = new Intent(MainActivity.this,ScheduleActivity.class);
-                    startActivity(intent);
-                }else if(which ==1 ){
-                    Intent intent = new Intent(MainActivity.this,CabinetListActivity.class);
-                    startActivity(intent);
-
-                }else if(which ==2){
-                    Intent intent = new Intent(MainActivity.this,SubjectListActivity.class);
-                    startActivity(intent);
-                }
-
 
 
             }
