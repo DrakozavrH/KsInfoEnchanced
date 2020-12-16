@@ -120,6 +120,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    // Заполнение основной страницы
     private void SetContent() {
 
         Intent intent = getIntent();
@@ -167,19 +168,81 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
+    // Заполнение левого меню
     private void setData() {
 
-        for (int i = 0; i < 20 ; i++) {
 
-            if(i%2 ==0){
+        for (int i = 0; i < 9 ; i++) {
+
+            // Кнопка в левом меню
+            Item item;
+
+            //Пример заполнения
+            /*if(i%2 ==0){
                 Item item = new Item("Доп. образование","Child item" + (i+1),true,R.drawable.notificontest3,1);
                 items.add(item);
             }else{
                 Item item = new Item("Доп. образование","",false,R.drawable.notificontest4,2);
                 items.add(item);
+            }*/
+
+            //Если пользователь зарегистрирован
+            if (((GlobalApplication) getApplication()).getLoginStatus().equals("User")) {
+
+
+                switch (i) {
+
+                    case 0: {
+                        item = new Item("Личный кабинет", "", false, R.drawable.userimage, 1);
+                    }
+                    break;
+                    case 1: {
+                        item = new Item("Уведомления", "", false, R.drawable.notificontest3, 1);
+                    }
+                    break;
+                    case 2: {
+                        item = new Item("Расписание", "", false, R.drawable.scheduleicon1, 1);
+                    }
+                    break;
+                    case 3: {
+                        item = new Item("Замены", "", false, R.drawable.changesicon1, 1);
+                    }
+                    break;
+                    case 4: {
+                        item = new Item("Доп. образование", "Кружки", true, R.drawable.educationicon1, 1);
+                    }
+                    break;
+                    case 5: {
+                        item = new Item("Мои документы", "Мои документы", true, R.drawable.documentsicon1, 5);
+                    }
+                    break;
+                    case 6: {
+                        item = new Item("Задать вопрос", "", false, R.drawable.questionsicon1, 1);
+                    }
+                    break;
+                    case 7: {
+                        item = new Item("Студсовет", "", false, R.drawable.studentcouncilicon1, 1);
+                    }
+                    break;
+                    case 8: {
+                        item = new Item("Психолог", "", false, R.drawable.psychologisticon1, 1);
+                    }
+                    break;
+                    default: {
+                        item = new Item("Error", "", false, R.drawable.notificontest4, 1);
+                    }
+                    break;
+
+
+                }
+
+
+                items.add(item);
+
             }
 
         }
+
 
         MyAdapter adapter = new MyAdapter(items);
         list.setAdapter(adapter);

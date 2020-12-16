@@ -4,11 +4,14 @@ package com.example.ksinfo.Adapters;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.SparseBooleanArray;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -70,8 +73,8 @@ class MyViewHolderWithChild extends RecyclerView.ViewHolder{
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     // Trying to add multiple children
-    Button viewTest1;
-    Button viewTest2;
+    TextView viewTest1;
+    TextView viewTest2;
 
 
     List<Item> items;
@@ -107,8 +110,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.context = parent.getContext();
 
         // Trying to add multiple children
-        viewTest1 = new Button(context);
-        viewTest2 = new Button(context);
+        viewTest1 = new TextView(context);
+        viewTest2 = new TextView(context);
 
 
 
@@ -171,9 +174,80 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
                 viewHolder.expandableLayout.setInRecyclerView(true);
 
+
+                if(item.getFunctionID() == 5){
+
+                    final float scale = context.getResources().getDisplayMetrics().density;
+
+
+                    //Первая кнопка
+                    int pixels = (int) (400 * scale + 0.5f);
+                    viewTest1.setWidth(pixels);
+                    pixels = (int) (60 * scale + 0.5f);
+                    viewTest1.setHeight(pixels);
+                    viewTest1.setTextColor(context.getResources().getColor(R.color.KsWhite));
+                    viewTest1.setBackgroundColor(context.getResources().getColor(R.color.KsBlue));
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    pixels = (int) (40 * scale + 0.5f);
+                    //lp.setMargins(pixels, 0, 0, 0);
+                    //viewTest1.setLayoutParams(lp);
+                    viewTest1.setText("Мои справки");
+                    viewTest1.setTextSize(30);
+                    viewTest1.setGravity(Gravity.CENTER_VERTICAL);
+                    viewTest1.setPadding(pixels,0,0,0);
+
+
+                    // Вторая кнопка
+                    pixels = (int) (400 * scale + 0.5f);
+                    viewTest2.setWidth(pixels);
+                    pixels = (int) (60 * scale + 0.5f);
+                    viewTest2.setHeight(pixels);
+                    viewTest2.setTextColor(context.getResources().getColor(R.color.KsWhite));
+                    viewTest2.setBackgroundColor(context.getResources().getColor(R.color.KsBlue));
+                    lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    pixels = (int) (40 * scale + 0.5f);
+                    //lp.setMargins(pixels, 0, 0, 0);
+                    //viewTest2.setLayoutParams(lp);
+                    viewTest2.setText("Заказать справку");
+                    viewTest2.setTextSize(30);
+                    viewTest2.setGravity(Gravity.CENTER_VERTICAL);
+                    viewTest2.setPadding(pixels,0,0,0);
+
+                    viewHolder.textViewChild.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO переход на страницу с документами
+
+
+                        }
+                    });
+
+
+                    viewTest1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO переход на страницу со справками
+
+                        }
+                    });
+
+                    viewTest2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO переход на страницу с заказом справок
+
+                        }
+                    });
+
+
+                    viewHolder.expandableLayout.addView(viewTest1);
+                    viewHolder.expandableLayout.addView(viewTest2);
+
+                }
+
+
                 // Trying to add multiple children
-                viewHolder.expandableLayout.addView(viewTest1);
-                viewHolder.expandableLayout.addView(viewTest2);
+
 
                 //Trying to add image
                 viewHolder.iconView.setImageResource(item.getDrawableID());

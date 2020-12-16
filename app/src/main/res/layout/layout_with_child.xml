@@ -3,8 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp"
     android:layout_marginBottom="1dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
     android:background="@color/KsLightBlue">
 
 
@@ -60,28 +61,23 @@
         android:layout_height="wrap_content"
         app:ael_duration="400"
         app:ael_expanded="false"
-        app:ael_interpolator="bounce"
+        app:ael_interpolator="linear"
         >
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:background="@color/KsBlue"
-            android:layout_alignParentTop="true"
             android:layout_toLeftOf="@id/button"
             android:layout_height="60dp">
 
-            <ImageView
-                android:id="@+id/iconViewChild"
-                android:layout_width="60dp"
-                android:src="@drawable/notificontest3"
-                android:layout_height="match_parent"/>
 
             <TextView
                 android:id="@+id/textViewChild"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textColor="@color/KsWhite"
+                android:layout_marginLeft="40dp"
 
                 android:text="@string/LeftMenuDefaultText"
                 android:textSize="30sp"
