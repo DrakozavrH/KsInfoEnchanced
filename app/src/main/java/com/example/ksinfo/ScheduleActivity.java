@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -38,12 +41,26 @@ public class ScheduleActivity extends AppCompatActivity {
 
 
         Button[] subjectButtons = new Button[17];
-
-
         for (int i = 0; i <17 ; i++) {
             int id = getResources().getIdentifier("subjectButton"+i, "id", getPackageName());
             subjectButtons[i] = (Button)findViewById(id);
         }
+
+
+        //TODO добавить изменение расписание в зависимости от выбранной в профиле группы
+
+        //Удаление кнопки со сменой группы, если пользователь зарегистрирован
+        if(((GlobalApplication) getApplication()).getLoginStatus().equals("User") && ((GlobalApplication)getApplication()).getGroupName() != null){
+            LinearLayout layout = findViewById(R.id.changeGroupLayout);
+            layout.setVisibility(View.GONE);
+
+            ScrollView scrollView = findViewById(R.id.mainScroll);
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)scrollView.getLayoutParams();
+            lp.setMargins(0, 0, 0, 0);
+            scrollView.setLayoutParams(lp);
+
+        }
+
 
 
     }
@@ -57,6 +74,7 @@ public class ScheduleActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
 
+
             }
         });
 
@@ -67,6 +85,10 @@ public class ScheduleActivity extends AppCompatActivity {
     }
 
     private void changeGroupAlert(){
+
+        //TODO добавить получение списка групп из бд и изменение расписание в зависимости от выбранной в этом диалоге группы
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final CharSequence[] options = {"1-АСС11-3", "1-АСС9-5ВБ", "1-ИСП11-14", "1-ИСП11-15", "1-ИСП11-16", "1-ИСП11-17", "1-ИСП9-15ВБ", "1-ИСП9-16ВБ", "1-ИСП9-17ВБ", "1-ОСАТ11-5", "1-ОСАТ9-6", "1-ОСАТ9-7ВБ", "2-АСС11-2", "2-АСС9-2", "2-ИСП11-10", "2-ИСП11-11", "2-ИСП11-12", "2-ИСП11-13", "2-ИСП9-10-ВБ", "2-ИСП9-7", "2-ИСП9-8", "2-ИСП9-9-ВБ", "2-КС11-7", "2-КС9-9", "2-ОСАТ11-3", "2-ОСАТ11-4", "2-ОСАТ9-4", "2-ОСАТ9-5", "3-АСС11-1", "3-АСС9-1", "3-ИСП11-5", "3-ИСП11-6", "3-ИСП11-7", "3-ИСП11-8", "3-ИСП9-3", "3-ИСП9-4", "3-ИСП9-5-ВБ", "3-ИСП9-6-ВБ", "3-КС11-5", "3-КС11-6", "3-КС9-7", "3-КС9-8-ВБ", "3-ОСАТ11-1", "3-ОСАТ11-2", "3-ОСАТ9-2", "3-ОСАТ9-3", "4-ИСП9-1", "4-ИСП9-2-ВБ", "4-ОСАТ9-1", "4-ПКС9-3-ВБ", "4-ПКС9-4-ВБ"};
 

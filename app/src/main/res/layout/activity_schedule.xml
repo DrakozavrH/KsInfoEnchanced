@@ -809,6 +809,7 @@
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/changeGroupLayout"
         android:background="@color/KsWhite"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
@@ -827,7 +828,6 @@
             android:paddingBottom="5dp"
             android:autoSizeTextType="uniform"
             android:layout_height="50dp"/>
-
 
 
     </LinearLayout>

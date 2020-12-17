@@ -20,6 +20,7 @@
         <activity android:name=".MainActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ScheduleActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ProfileActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".NotificationsActivity" android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

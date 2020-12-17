@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 signIn(LoginText.getText().toString(), PasswordText.getText().toString());
 
-//                Snackbar.make(activity_login, "Пользователь не найден", Snackbar.LENGTH_LONG).show();
+                //Snackbar.make(activity_login, "Пользователь не найден", Snackbar.LENGTH_LONG).show();
 
                 ((GlobalApplication) getApplication()).setLoginStatus("User");
                 Intent intent = new Intent(LoginActivity.this,ProfileActivity.class);

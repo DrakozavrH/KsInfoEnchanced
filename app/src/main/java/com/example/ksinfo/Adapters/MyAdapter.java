@@ -3,6 +3,7 @@ package com.example.ksinfo.Adapters;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.util.SparseBooleanArray;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,8 +20,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ksinfo.LoginActivity;
 import com.example.ksinfo.Model.Item;
+import com.example.ksinfo.NotificationsActivity;
+import com.example.ksinfo.ProfileActivity;
 import com.example.ksinfo.R;
+import com.example.ksinfo.ScheduleActivity;
 import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
 import com.github.aakira.expandablelayout.ExpandableLinearLayout;
 import com.github.aakira.expandablelayout.Utils;
@@ -91,7 +96,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
 
-
     }
 
     @Override
@@ -147,20 +151,87 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 viewHolder.iconView.setImageResource(item.getDrawableID());
 
 
-                if(item.getFunctionID() == 1){
+                if(item.getFunctionID() == 0){
                     viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(context,"noChildFunction1",Toast.LENGTH_LONG).show();
+                            //переход на страницу с личным кабинетом
+                            Intent intent = new Intent(context, ProfileActivity.class);
+                            context.startActivity(intent);
+
                         }
                     });
-                }else if(item.getFunctionID() == 2){
+                }else if(item.getFunctionID() == 1){
                     viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(context,"noChildFunction2",Toast.LENGTH_LONG).show();
+                            //переход на страницу с уведомлениями
+
+                            Intent intent = new Intent(context, NotificationsActivity.class);
+                            context.startActivity(intent);
+
                         }
                     });
+                }else if (item.getFunctionID() == 2) {
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //переход на страницу с расписанием
+                            Intent intent = new Intent(context, ScheduleActivity.class);
+                            context.startActivity(intent);
+
+                        }
+                    });
+                }else if (item.getFunctionID() == 3) {
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO переход на страницу с заменами
+
+
+                        }
+                    });
+                }else if (item.getFunctionID() == 6) {
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO переход на страницу вопросов
+
+
+                        }
+                    });
+                }else if (item.getFunctionID() == 7) {
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO переход на страницу студсовета
+
+
+                        }
+                    });
+                }else if (item.getFunctionID() == 8) {
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO переход на страницу психолога
+
+
+                        }
+                    });
+                }else if (item.getFunctionID() == 9) {
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO переход на страницу с сообщениями
+
+
+                        }
+                    });
+                }else if (item.getFunctionID() == 10){
+                    // Отображение закрытых кнопок для гостя
+                    //TODO смена цвета кнопки и цвета текста, без добавления функции при нажатии/перенос на страницу регистрации
+
+
                 }
 
 
@@ -174,8 +245,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
                 viewHolder.expandableLayout.setInRecyclerView(true);
 
-
-                if(item.getFunctionID() == 5){
+                if(item.getFunctionID() == 4){
 
                     final float scale = context.getResources().getDisplayMetrics().density;
 
@@ -188,7 +258,52 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     viewTest1.setTextColor(context.getResources().getColor(R.color.KsWhite));
                     viewTest1.setBackgroundColor(context.getResources().getColor(R.color.KsBlue));
                     LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    pixels = (int) (40 * scale + 0.5f);
+                    pixels = (int) (10 * scale + 0.5f);
+                    //lp.setMargins(pixels, 0, 0, 0);
+                    //viewTest1.setLayoutParams(lp);
+                    viewTest1.setText("Мои кружки");
+                    viewTest1.setTextSize(30);
+                    viewTest1.setGravity(Gravity.CENTER_VERTICAL);
+                    viewTest1.setPadding(pixels,0,0,0);
+
+
+                    viewHolder.textViewChild.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO переход на страницу с кружками
+
+
+                        }
+                    });
+
+                    viewTest1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //TODO переход на страницу с моими кружками
+
+
+                        }
+                    });
+
+
+
+                    viewHolder.expandableLayout.addView(viewTest1);
+
+                }
+                else if(item.getFunctionID() == 5){
+
+                    final float scale = context.getResources().getDisplayMetrics().density;
+
+
+                    //Первая кнопка
+                    int pixels = (int) (400 * scale + 0.5f);
+                    viewTest1.setWidth(pixels);
+                    pixels = (int) (60 * scale + 0.5f);
+                    viewTest1.setHeight(pixels);
+                    viewTest1.setTextColor(context.getResources().getColor(R.color.KsWhite));
+                    viewTest1.setBackgroundColor(context.getResources().getColor(R.color.KsBlue));
+                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    pixels = (int) (10 * scale + 0.5f);
                     //lp.setMargins(pixels, 0, 0, 0);
                     //viewTest1.setLayoutParams(lp);
                     viewTest1.setText("Мои справки");
@@ -205,7 +320,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     viewTest2.setTextColor(context.getResources().getColor(R.color.KsWhite));
                     viewTest2.setBackgroundColor(context.getResources().getColor(R.color.KsBlue));
                     lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    pixels = (int) (40 * scale + 0.5f);
+                    pixels = (int) (10 * scale + 0.5f);
                     //lp.setMargins(pixels, 0, 0, 0);
                     //viewTest2.setLayoutParams(lp);
                     viewTest2.setText("Заказать справку");
@@ -243,17 +358,20 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     viewHolder.expandableLayout.addView(viewTest1);
                     viewHolder.expandableLayout.addView(viewTest2);
 
+                }else if(item.getFunctionID() == 10){
+                    // Отображение закрытых кнопок со списком для гостя
+                    //TODO смена цвета кнопки и цвета текста, без добавления функции при нажатии/перенос на страницу регистрации
+
+
                 }
 
-
-                // Trying to add multiple children
 
 
                 //Trying to add image
                 viewHolder.iconView.setImageResource(item.getDrawableID());
 
                 //Trying to add on click listener
-                if(item.getFunctionID() == 1){
+                /*if(item.getFunctionID() == 1){
                     viewTest1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -282,7 +400,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                             Toast.makeText(context,"function2Button2",Toast.LENGTH_SHORT).show();
                         }
                     });
-                }
+                }*/
 
 
 
