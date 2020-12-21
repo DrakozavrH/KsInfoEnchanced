@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -67,6 +68,11 @@ public class SettingsActivity extends AppCompatActivity {
                 rightMenuDialog();
             }
         });
+
+        CheckBox notificationsCheckBox = findViewById(R.id.NotificationsCheckbox);
+        //TODO включение/ выключение уведомлений в зависимости от CheckBox
+
+
 
     }
 

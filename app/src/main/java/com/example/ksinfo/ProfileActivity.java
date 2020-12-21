@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ksinfo.Adapters.MyAdapter;
 import com.example.ksinfo.Model.Item;
+import com.example.ksinfo.Model.User;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -170,7 +171,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Setting profile information
 
-        if(((GlobalApplication) getApplication()).getLoginStatus().equals("User")){
+        if(User.role == 0){
 
 
             //TODO получение группы пользователя из бд

@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.example.ksinfo.Model.AdditionalEducation;
 
+import com.example.ksinfo.Model.AdditionalEducation;
+
 import java.util.ArrayList;
 import java.util.List;
 

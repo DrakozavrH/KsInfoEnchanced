@@ -7,12 +7,12 @@ import java.io.Serializable;
 @IgnoreExtraProperties
 public class User implements Serializable {
 
-    public String email;
-    public String Name;
-    public String Patronymic;
-    public String Surname;
-    public String group;
-    public int role;
+    public static String email;
+    public static String Name;
+    public static String Patronymic;
+    public static String Surname;
+    public static String group;
+    public static int role;
 
     public User(){
 
