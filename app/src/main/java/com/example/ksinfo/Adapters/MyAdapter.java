@@ -2,8 +2,10 @@ package com.example.ksinfo.Adapters;
 
 
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.SparseBooleanArray;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,12 +22,23 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ksinfo.ChangesActivity;
+import com.example.ksinfo.ClubListActivity;
+import com.example.ksinfo.GlobalApplication;
 import com.example.ksinfo.LoginActivity;
+import com.example.ksinfo.MessagesActivity;
 import com.example.ksinfo.Model.Item;
+import com.example.ksinfo.MyClubsActivity;
+import com.example.ksinfo.MyDocumentsActivity;
+import com.example.ksinfo.MyNotesActivity;
 import com.example.ksinfo.NotificationsActivity;
+import com.example.ksinfo.OrderNotesActivity;
 import com.example.ksinfo.ProfileActivity;
+import com.example.ksinfo.PsychologistActivity;
+import com.example.ksinfo.QuestionsActivity;
 import com.example.ksinfo.R;
 import com.example.ksinfo.ScheduleActivity;
+import com.example.ksinfo.StudentCouncilActivity;
 import com.github.aakira.expandablelayout.ExpandableLayoutListenerAdapter;
 import com.github.aakira.expandablelayout.ExpandableLinearLayout;
 import com.github.aakira.expandablelayout.Utils;
@@ -141,7 +154,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         switch(holder.getItemViewType()){
 
             case 0:{
-                MyViewHolderWithoutChild viewHolder = (MyViewHolderWithoutChild)holder;
+                final MyViewHolderWithoutChild viewHolder = (MyViewHolderWithoutChild)holder;
                 Item item = items.get(position);
                 viewHolder.setIsRecyclable(false);
                 viewHolder.textView.setText(item.getText());
@@ -186,7 +199,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            //TODO переход на страницу с заменами
+                            // переход на страницу с заменами
+                            Intent intent = new Intent(context, ChangesActivity.class);
+                            context.startActivity(intent);
 
 
                         }
@@ -195,7 +210,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            //TODO переход на страницу вопросов
+                            //переход на страницу вопросов
+                            Intent intent = new Intent(context, QuestionsActivity.class);
+                            context.startActivity(intent);
 
 
                         }
@@ -205,7 +222,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         @Override
                         public void onClick(View v) {
                             //TODO переход на страницу студсовета
-
+                            Intent intent = new Intent(context, StudentCouncilActivity.class);
+                            context.startActivity(intent);
 
                         }
                     });
@@ -214,7 +232,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         @Override
                         public void onClick(View v) {
                             //TODO переход на страницу психолога
-
+                            Intent intent = new Intent(context, PsychologistActivity.class);
+                            context.startActivity(intent);
 
                         }
                     });
@@ -223,14 +242,27 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         @Override
                         public void onClick(View v) {
                             //TODO переход на страницу с сообщениями
-
+                            Intent intent = new Intent(context, MessagesActivity.class);
+                            context.startActivity(intent);
 
                         }
                     });
                 }else if (item.getFunctionID() == 10){
                     // Отображение закрытых кнопок для гостя
                     //TODO смена цвета кнопки и цвета текста, без добавления функции при нажатии/перенос на страницу регистрации
+                    viewHolder.itemView.setBackgroundColor(context.getResources().getColor(R.color.KsLockedBackground));
+                    viewHolder.textView.setTextColor(context.getResources().getColor(R.color.KsLockedForeground));
+                    viewHolder.iconView.setColorFilter(Color.rgb(123, 123, 123), android.graphics.PorterDuff.Mode.MULTIPLY);
 
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //переход на страницу логина
+                            Intent intent = new Intent(context, LoginActivity.class);
+                            context.startActivity(intent);
+
+                        }
+                    });
 
                 }
 
@@ -270,8 +302,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     viewHolder.textViewChild.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            //TODO переход на страницу с кружками
-
+                            // переход на страницу с кружками
+                            Intent intent = new Intent(context, ClubListActivity.class);
+                            context.startActivity(intent);
 
                         }
                     });
@@ -279,8 +312,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     viewTest1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            //TODO переход на страницу с моими кружками
-
+                            //переход на страницу с моими кружками
+                            Intent intent = new Intent(context, MyClubsActivity.class);
+                            context.startActivity(intent);
 
                         }
                     });
@@ -332,7 +366,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         @Override
                         public void onClick(View v) {
                             //TODO переход на страницу с документами
-
+                            Intent intent = new Intent(context, MyDocumentsActivity.class);
+                            context.startActivity(intent);
 
                         }
                     });
@@ -342,7 +377,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         @Override
                         public void onClick(View v) {
                             //TODO переход на страницу со справками
-
+                            Intent intent = new Intent(context, MyNotesActivity.class);
+                            context.startActivity(intent);
                         }
                     });
 
@@ -350,7 +386,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         @Override
                         public void onClick(View v) {
                             //TODO переход на страницу с заказом справок
-
+                            Intent intent = new Intent(context, OrderNotesActivity.class);
+                            context.startActivity(intent);
                         }
                     });
 
@@ -361,6 +398,17 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }else if(item.getFunctionID() == 10){
                     // Отображение закрытых кнопок со списком для гостя
                     //TODO смена цвета кнопки и цвета текста, без добавления функции при нажатии/перенос на страницу регистрации
+                    viewHolder.itemView.setBackgroundColor(context.getResources().getColor(R.color.KsLockedBackground));
+                    viewHolder.textView.setTextColor(context.getResources().getColor(R.color.KsLockedForeground));
+                    viewHolder.iconView.setColorFilter(Color.rgb(123, 123, 123), android.graphics.PorterDuff.Mode.MULTIPLY);
+                    viewHolder.button.setVisibility(View.INVISIBLE);
+                    viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(context, LoginActivity.class);
+                            context.startActivity(intent);
+                        }
+                    });
 
 
                 }

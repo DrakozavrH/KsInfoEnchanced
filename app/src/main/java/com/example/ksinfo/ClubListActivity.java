@@ -2,13 +2,11 @@ package com.example.ksinfo;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -21,9 +19,8 @@ import com.example.ksinfo.Model.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChangesActivity extends AppCompatActivity {
+public class ClubListActivity extends AppCompatActivity {
 
-    //Переменные для левого меню
     RecyclerView list;
     RecyclerView.LayoutManager layoutManager;
     List<Item> items = new ArrayList<>();
@@ -31,16 +28,14 @@ public class ChangesActivity extends AppCompatActivity {
     //Переменные для правого меню
     AlertDialog menuDialog;
 
-
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_changes);
+    protected void onStart() {
+        super.onStart();
+        setContentView(R.layout.activity_club_list);
 
         // Заполнение левого меню
         ImageView headerImage = findViewById(R.id.menuHeaderImage);
-        final DrawerLayout drawerLayout = findViewById(R.id.ChangesDrawerLayout);
+        final DrawerLayout drawerLayout = findViewById(R.id.ClubListDrawerLayout);
         headerImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +44,6 @@ public class ChangesActivity extends AppCompatActivity {
                 list =(RecyclerView) findViewById(R.id.recycler);
 
                 if(list.getChildCount() == 0){
-
 
                     list.setHasFixedSize(true);
                     layoutManager = new LinearLayoutManager(getBaseContext());
@@ -70,8 +64,8 @@ public class ChangesActivity extends AppCompatActivity {
             }
         });
 
-
     }
+
 
     private void rightMenuDialog(){
 
@@ -84,11 +78,11 @@ public class ChangesActivity extends AppCompatActivity {
 
                 switch (which) {
                     case 0: {
-                        Intent intent = new Intent(ChangesActivity.this, SettingsActivity.class);
+                        Intent intent = new Intent(ClubListActivity.this, SettingsActivity.class);
                         startActivity(intent);
                     }break;
                     case 1:{
-                        Intent intent = new Intent(ChangesActivity.this, LoginActivity.class);
+                        Intent intent = new Intent(ClubListActivity.this, LoginActivity.class);
                         startActivity(intent);
                     }break;
                     default:

@@ -21,7 +21,7 @@ import com.example.ksinfo.Model.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChangesActivity extends AppCompatActivity {
+public class StudentCouncilActivity extends AppCompatActivity {
 
     //Переменные для левого меню
     RecyclerView list;
@@ -31,16 +31,14 @@ public class ChangesActivity extends AppCompatActivity {
     //Переменные для правого меню
     AlertDialog menuDialog;
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_changes);
+        setContentView(R.layout.activity_student_council);
 
         // Заполнение левого меню
         ImageView headerImage = findViewById(R.id.menuHeaderImage);
-        final DrawerLayout drawerLayout = findViewById(R.id.ChangesDrawerLayout);
+        final DrawerLayout drawerLayout = findViewById(R.id.StudentCouncilDrawerLayout);
         headerImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,8 +67,6 @@ public class ChangesActivity extends AppCompatActivity {
                 rightMenuDialog();
             }
         });
-
-
     }
 
     private void rightMenuDialog(){
@@ -84,11 +80,11 @@ public class ChangesActivity extends AppCompatActivity {
 
                 switch (which) {
                     case 0: {
-                        Intent intent = new Intent(ChangesActivity.this, SettingsActivity.class);
+                        Intent intent = new Intent(StudentCouncilActivity.this, SettingsActivity.class);
                         startActivity(intent);
                     }break;
                     case 1:{
-                        Intent intent = new Intent(ChangesActivity.this, LoginActivity.class);
+                        Intent intent = new Intent(StudentCouncilActivity.this, LoginActivity.class);
                         startActivity(intent);
                     }break;
                     default:

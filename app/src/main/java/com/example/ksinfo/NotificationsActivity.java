@@ -1,11 +1,15 @@
 package com.example.ksinfo;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +28,9 @@ public class NotificationsActivity extends AppCompatActivity {
     RecyclerView list;
     RecyclerView.LayoutManager layoutManager;
     List<Item> items = new ArrayList<>();
+
+    //Переменные для правого меню
+    AlertDialog menuDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +61,44 @@ public class NotificationsActivity extends AppCompatActivity {
             }
         });
 
+        //Правое меню
+        ImageButton imageButton = findViewById(R.id.menuHeaderButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rightMenuDialog();
+            }
+        });
+
+    }
+
+    private void rightMenuDialog(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final CharSequence[] options = {"Настройки","Выход из аккаунта"};
+
+        builder.setTitle("Меню").setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                switch (which) {
+                    case 0: {
+                        Intent intent = new Intent(NotificationsActivity.this, SettingsActivity.class);
+                        startActivity(intent);
+                    }break;
+                    case 1:{
+                        Intent intent = new Intent(NotificationsActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }break;
+                    default:
+
+                }
+
+            }
+        });
+
+        menuDialog = builder.create();
+        menuDialog.show();
     }
 
     // Заполнение левого меню
@@ -155,11 +200,11 @@ public class NotificationsActivity extends AppCompatActivity {
                     }
                     break;
                     case 4: {
-                        item = new Item("Доп. образование", "Кружки", true, R.drawable.educationicon1, 4);
+                        item = new Item("Доп. образование", "Кружки", true, R.drawable.educationicon1, 10);
                     }
                     break;
                     case 5: {
-                        item = new Item("Мои документы", "Мои документы", true, R.drawable.documentsicon1, 5);
+                        item = new Item("Мои документы", "Мои документы", true, R.drawable.documentsicon1, 10);
                     }
                     break;
                     case 6: {

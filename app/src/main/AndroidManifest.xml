@@ -21,6 +21,17 @@
         <activity android:name=".ScheduleActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".ProfileActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".NotificationsActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".ChangesActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".ClubListActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".MyClubsActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".MyDocumentsActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".MyNotesActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".OrderNotesActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".QuestionsActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".StudentCouncilActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".PsychologistActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".MessagesActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".SettingsActivity" android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

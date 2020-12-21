@@ -8,22 +8,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="61dp"
         android:id="@+id/menuHeader"
         android:orientation="horizontal"
         android:background="@color/KsBlue"
 
+
         android:elevation="6dp"
         >
 
-        <ImageView android:id="@+id/menuHeaderImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/leftmenuicon"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="5dp"
-            android:layout_gravity="left"
-            android:layout_weight="0"/>
+
 
         <TextView android:id="@+id/menuHeaderText"
             android:layout_width="wrap_content"
@@ -36,16 +30,7 @@
             android:layout_marginBottom="4dp"
             android:gravity="center_horizontal"/>
 
-        <ImageButton
-            android:id="@+id/menuHeaderButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:background="?android:selectableItemBackground"
-            android:paddingVertical="10dp"
-            android:scaleType="fitCenter"
 
-            android:src="@drawable/menuheaderbuttonwhite" />
 
 
 

@@ -16,4 +16,8 @@
     <color name="KsGray">#494949</color>
     <color name="KsOrangeDim">#F28F3B</color>
 
+    <color name="KsLockedBackground">#012F57</color>
+    <color name="KsLockedForeground">#717171</color>
+
+
 </resources>

@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ScheduleDrawerLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -13,14 +21,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/menuHeader"
         android:orientation="horizontal"
-        android:background="@color/KsWhite"
+        android:background="@color/KsBlue"
         android:elevation="6dp"
         >
 
         <ImageView android:id="@+id/menuHeaderImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ks54logo2"
+            android:src="@drawable/leftmenuicon"
             android:paddingHorizontal="10dp"
             android:paddingVertical="5dp"
             android:layout_gravity="left"
@@ -31,9 +39,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/TextScheduleHeader"
-            android:textColor="@color/KsBlueDim"
+            android:textColor="@color/KsWhite"
             android:autoSizeTextType="uniform"
-            android:gravity="center_vertical"/>
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"/>
 
         <ImageButton
             android:id="@+id/menuHeaderButton"
@@ -44,10 +54,7 @@
             android:paddingVertical="10dp"
             android:scaleType="fitCenter"
 
-            android:src="@drawable/menuheaderbutton" />
-
-
-
+            android:src="@drawable/menuheaderbuttonwhite" />
     </LinearLayout>
 
     <ScrollView
@@ -810,7 +817,7 @@
 
     <LinearLayout
         android:id="@+id/changeGroupLayout"
-        android:background="@color/KsWhite"
+        android:background="@color/KsBlue"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:gravity="center"
@@ -829,8 +836,21 @@
             android:autoSizeTextType="uniform"
             android:layout_height="50dp"/>
 
-
     </LinearLayout>
 
 
 </RelativeLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:background="@color/KsBlueDim"
+        app:headerLayout="@layout/nav_header_main"
+        />
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
