@@ -2,6 +2,11 @@ package com.example.ksinfo;
 
 import android.app.Application;
 
+import com.example.ksinfo.Model.AdditionalEducation;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public  class GlobalApplication extends Application {
 
     // Статус пользователя(Гость/Студент/Админ)
@@ -36,7 +41,7 @@ public  class GlobalApplication extends Application {
         this.loginStatus = loginVariable;
     }
 
-
+    public static AdditionalEducation[] MasAdd = new AdditionalEducation[5];
 
 
 
