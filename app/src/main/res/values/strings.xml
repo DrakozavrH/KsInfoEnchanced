@@ -119,9 +119,10 @@
 
     <!-- Clubs Activity  -->
 
+    <string name="ClubDefaultName">Кружок</string>
+    <string name="ClubDefaultDescription">Описание</string>
+
     <!--<string name="ClubState">0/0</string>
-
-
     <string name="BasketballTitle">Баскетбол</string>
     <string name="BasketballTeacher">Шадрин А.О.</string>
     <string name="BasketballPlatform">ОП-6</string>
@@ -132,8 +133,18 @@
     <string name="ModellingPlatform">ОП-6</string>
     <string name="ModellingDescription">Баскетбол требует от детей координации, выносливости, аналитического мышления. Именно развитием этих качеств уделяется особое внимание в секции баскетбола. Основными направлениями деятельности секции на ОП №6 являются подготовка сборной КС 54 для участия в соревнованиях и различных спортивных проектах.</string>-->
 
+    <!-- Settings Activity  -->
+    <string name="SettingsNotificationsHeader">Уведомления</string>
+    <string name="SettingsNotificationsDescription">Оповещение при получении новых уведомлений</string>
 
 
+    <!-- OrderNotes Activity  -->
+    <string name="ChooseNoteType">Выберите тип справки</string>
+    <string name="ChooseNoteTypeButtonDefault">Выберите тип справки</string>
+    <string name="NoteForDefault">Справка для предоставления в </string>
+    <string name="NoteOrderType">Тип документа для выдачи</string>
+    <string name="NoteOrderTypeButtonDefault">Тип документа для выдачи</string>
+    <string name="MakeOrderButton">Сформировать запрос</string>
 
     <string name="Cabinet">Кабинет</string>
     <string name="Teacher">Преподаватель</string>

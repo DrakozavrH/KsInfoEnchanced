@@ -66,6 +66,59 @@
                 android:layout_height="wrap_content">
 
 
+                <LinearLayout
+                    android:background="@color/KsLightBlue"
+                    android:orientation="horizontal"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/SettingsNotificationsHeader"
+                            android:textSize="28sp"
+                            android:paddingLeft="10dp"
+                            android:layout_marginRight="100dp"
+                            android:textStyle="bold"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:text="@string/SettingsNotificationsDescription"
+                            android:textColor="@color/KsWhite"
+                            android:layout_marginRight="100dp"
+                            android:paddingBottom="10dp"
+                            android:textSize="20sp" />
+
+
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/NotificationsCheckbox"
+                        android:layout_width="30dp"
+                        android:layout_height="50dp"
+                        android:background="@color/KsLightBlue"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="-50dp"
+                        android:scaleX="2"
+                        android:scaleY="2"
+                        android:buttonTint="@color/KsWhite"
+                        android:checked="true"
+                        />
+
+                </LinearLayout>
 
 
             </LinearLayout>

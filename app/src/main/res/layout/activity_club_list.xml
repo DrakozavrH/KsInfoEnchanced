@@ -69,7 +69,7 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/card_view"
+                    android:id="@+id/card_view1"
                     android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
@@ -83,10 +83,11 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/club1Name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/KsWhite"
-                            android:text="@string/SubjectPhilosophy"
+                            android:text="@string/ClubDefaultName"
                             android:textSize="24sp"
                             android:background="@color/KsBlue"
                             android:layout_marginBottom="3dp"
@@ -98,13 +99,15 @@
                             android:layout_height="wrap_content">
 
                             <ImageView
-                                android:layout_width="100dp"
+                                android:id="@+id/club1Image"
+                                android:layout_width="200dp"
                                 android:layout_height="150dp"
                                 android:layout_marginHorizontal="3dp"
                                 android:layout_marginBottom="3dp"
-                                android:src="@drawable/philosophyimg" />
+                                android:src="@drawable/clubbasketball1" />
 
                             <TextView
+                                android:id="@+id/club1Description"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginHorizontal="3dp"
@@ -116,13 +119,877 @@
                                 android:ellipsize="end"
                                 android:singleLine="false"
 
-                                android:text="@string/PhilosophyInfo"
+                                android:text="@string/ClubDefaultDescription"
                                 android:textColor="@color/KsWhite"/>
 
                         </LinearLayout>
 
                         <Button
-                            android:id="@+id/SPhilosophyButton"
+                            android:id="@+id/club1Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view2"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club2Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club2Image"
+                                android:layout_width="200dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/clubmodelling1" />
+
+                            <TextView
+                                android:id="@+id/club2Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club2Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view3"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club3Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club3Image"
+                                android:layout_width="200dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/clubvolleyball1" />
+
+                            <TextView
+                                android:id="@+id/club3Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club3Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view4"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club4Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club4Image"
+                                android:layout_width="200dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/cluborchestra1" />
+
+                            <TextView
+                                android:id="@+id/club4Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club4Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view5"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club5Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club5Image"
+                                android:layout_width="200dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/clublasers1" />
+
+                            <TextView
+                                android:id="@+id/club5Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club5Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view6"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club6Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club6Image"
+                                android:layout_width="200dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/clubpsychology1" />
+
+                            <TextView
+                                android:id="@+id/club6Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club6Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view7"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club7Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club7Image"
+                                android:layout_width="200dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/clubtabletennis1" />
+
+                            <TextView
+                                android:id="@+id/club7Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club7Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view8"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club8Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club8Image"
+                                android:layout_width="100dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/clubvolunteers1" />
+
+                            <TextView
+                                android:id="@+id/club8Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club8Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view9"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club9Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club9Image"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/clubofp1" />
+
+                            <TextView
+                                android:id="@+id/club9Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club9Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view10"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club10Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club10Image"
+                                android:layout_width="200dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/clubjava1" />
+
+                            <TextView
+                                android:id="@+id/club10Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club10Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view11"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club11Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club11Image"
+                                android:layout_width="200dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/clubplumbing1" />
+
+                            <TextView
+                                android:id="@+id/club11Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club11Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view12"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club12Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club12Image"
+                                android:layout_width="200dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/clubdrawing1" />
+
+                            <TextView
+                                android:id="@+id/club12Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club12Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:paddingHorizontal="15dp"
+                            android:layout_margin="7dp"
+                            android:text="@string/More"
+                            android:textColor="@color/KsWhite"
+                            android:background="@color/KsBlue"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view13"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    card_view:cardCornerRadius="10dp"
+                    app:cardBackgroundColor="@color/KsLightBlue"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/club13Name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/KsWhite"
+                            android:text="@string/ClubDefaultName"
+                            android:textSize="24sp"
+                            android:background="@color/KsBlue"
+                            android:layout_marginBottom="3dp"
+                            android:gravity="center" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/club13Image"
+                                android:layout_width="200dp"
+                                android:layout_height="150dp"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:src="@drawable/clubchess1" />
+
+                            <TextView
+                                android:id="@+id/club13Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:background="@color/KsBlue"
+                                android:padding="10dp"
+                                android:textSize="18sp"
+                                android:maxLines="6"
+                                android:ellipsize="end"
+                                android:singleLine="false"
+
+                                android:text="@string/ClubDefaultDescription"
+                                android:textColor="@color/KsWhite"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/club13Button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="right"
