@@ -1,0 +1,164 @@
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\n\r\nandroid {\r\n    compileSdkVersion 30\r\n    buildToolsVersion \"30.0.2\"\r\n\r\n    defaultConfig {\r\n        applicationId \"com.example.ksinfo\"\r\n        minSdkVersion 19\r\n        targetSdkVersion 30\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: \"libs\", include: [\"*.jar\"])\r\n    implementation 'androidx.appcompat:appcompat:1.2.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.0.3'\r\n    implementation 'com.google.android.material:material:1.2.1'\r\n    implementation 'androidx.cardview:cardview:1.0.0'\r\n    testImplementation 'junit:junit:4.12'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.2'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'\r\n    implementation platform('com.google.firebase:firebase-bom:26.1.1')\r\n    implementation 'com.google.firebase:firebase-analytics'\r\n\r\n    implementation 'androidx.navigation:navigation-fragment:2.3.1'\r\n    implementation 'androidx.navigation:navigation-ui:2.3.1'\r\n    implementation \"androidx.recyclerview:recyclerview:1.1.0\"\r\n    implementation 'com.github.aakira:expandable-layout:1.6.0@aar'\r\n\r\n    implementation 'com.google.firebase:firebase-auth:20.0.1'\r\n    implementation 'com.google.firebase:firebase-database:19.5.1'\r\n}\r\n\r\napply plugin: 'com.google.gms.google-services'\r\napply plugin: 'com.android.application'
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 4394092f4d4259df3b9b6b3f897c7227dfdf2fc8)
++++ app/build.gradle	(date 1608227414114)
+@@ -28,6 +28,7 @@
+     implementation 'androidx.constraintlayout:constraintlayout:2.0.3'
+     implementation 'com.google.android.material:material:1.2.1'
+     implementation 'androidx.cardview:cardview:1.0.0'
++    implementation 'androidx.navigation:navigation-runtime:2.3.2'
+     testImplementation 'junit:junit:4.12'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+Index: app/src/main/java/com/example/ksinfo/LoginActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.ksinfo;\r\n\r\nimport android.app.Activity;\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.provider.Settings;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.RelativeLayout;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.annotation.Nullable;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport com.google.android.gms.tasks.OnCompleteListener;\r\nimport com.google.android.gms.tasks.Task;\r\nimport com.google.android.material.snackbar.Snackbar;\r\nimport com.google.firebase.auth.AuthResult;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\n\r\npublic class LoginActivity extends AppCompatActivity {\r\n\r\n    TextView LoginText;\r\n    TextView PasswordText;\r\n    private RelativeLayout activity_login;\r\n    private FirebaseAuth mAuth;\r\n\r\n    @Override\r\n    protected void onCreate(@Nullable Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_login);\r\n\r\n        LoginText = findViewById(R.id.LoginText);\r\n        PasswordText = findViewById(R.id.PasswordText);\r\n        activity_login = findViewById(R.id.activity_login);\r\n\r\n        Button loginButton = findViewById(R.id.LoginButton);\r\n        Button guestButton = findViewById(R.id.NoRegistrationButton);\r\n\r\n        mAuth = FirebaseAuth.getInstance();\r\n\r\n\r\n        loginButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                signIn(LoginText.getText().toString(), PasswordText.getText().toString());\r\n\r\n//                Snackbar.make(activity_login, \"Пользователь не найден\", Snackbar.LENGTH_LONG).show();\r\n\r\n                ((GlobalApplication) getApplication()).setLoginStatus(\"User\");\r\n                Intent intent = new Intent(LoginActivity.this,ProfileActivity.class);\r\n\r\n                String name = LoginText.getText().toString();\r\n\r\n                intent.putExtra(\"name\", name);\r\n\r\n                if(LoginText.getText().toString().equals(\"admin\") && PasswordText.getText().toString().equals(\"admin\")){\r\n                    ((GlobalApplication) getApplication()).setLoginStatus(\"Admin\");\r\n                }\r\n\r\n                startActivity(intent);\r\n\r\n            }\r\n        });\r\n\r\n        guestButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                ((GlobalApplication) getApplication()).setLoginStatus(\"Guest\");\r\n                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);\r\n                startActivity(intent);\r\n            }\r\n        });\r\n    }\r\n\r\n        public void signIn(String email , String password)\r\n        {\r\n            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {\r\n                @Override\r\n                public void onComplete(@NonNull Task<AuthResult> task) {\r\n                    if(task.isSuccessful()) {\r\n                        Toast.makeText(LoginActivity.this, \"Aвторизация успешна\", Toast.LENGTH_SHORT).show();\r\n                    }else\r\n                        Toast.makeText(LoginActivity.this, \"Aвторизация провалена\", Toast.LENGTH_SHORT).show();\r\n\r\n                }\r\n            });\r\n        }\r\n        \r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/ksinfo/LoginActivity.java	(revision 4394092f4d4259df3b9b6b3f897c7227dfdf2fc8)
++++ app/src/main/java/com/example/ksinfo/LoginActivity.java	(date 1608215333040)
+@@ -19,8 +19,10 @@
+ import com.google.android.material.snackbar.Snackbar;
+ import com.google.firebase.auth.AuthResult;
+ import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.auth.FirebaseUser;
+ import com.google.firebase.database.DatabaseReference;
+ import com.google.firebase.database.FirebaseDatabase;
++import com.google.firebase.database.Query;
+ 
+ public class LoginActivity extends AppCompatActivity {
+ 
+@@ -28,6 +30,9 @@
+     TextView PasswordText;
+     private RelativeLayout activity_login;
+     private FirebaseAuth mAuth;
++    private DatabaseReference mDataBase;
++    private String User_key = "User";
++
+ 
+     @Override
+     protected void onCreate(@Nullable Bundle savedInstanceState) {
+@@ -42,31 +47,14 @@
+         Button guestButton = findViewById(R.id.NoRegistrationButton);
+ 
+         mAuth = FirebaseAuth.getInstance();
+-
++        mDataBase = FirebaseDatabase.getInstance().getReference(User_key);
+ 
+         loginButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 signIn(LoginText.getText().toString(), PasswordText.getText().toString());
+-
+-//                Snackbar.make(activity_login, "Пользователь не найден", Snackbar.LENGTH_LONG).show();
+-
+-                ((GlobalApplication) getApplication()).setLoginStatus("User");
+-                Intent intent = new Intent(LoginActivity.this,ProfileActivity.class);
+-
+-                String name = LoginText.getText().toString();
+-
+-                intent.putExtra("name", name);
+-
+-                if(LoginText.getText().toString().equals("admin") && PasswordText.getText().toString().equals("admin")){
+-                    ((GlobalApplication) getApplication()).setLoginStatus("Admin");
+-                }
+-
+-                startActivity(intent);
+-
+             }
+         });
+-
+         guestButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+@@ -77,13 +65,25 @@
+         });
+     }
+ 
+-        public void signIn(String email , String password)
++        public void signIn(final String email , String password)
+         {
+             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                 @Override
+                 public void onComplete(@NonNull Task<AuthResult> task) {
+                     if(task.isSuccessful()) {
+                         Toast.makeText(LoginActivity.this, "Aвторизация успешна", Toast.LENGTH_SHORT).show();
++//                        Snackbar.make(activity_login, "Пользователь не найден", Snackbar.LENGTH_LONG).show();
++
++//                        ((GlobalApplication) getApplication()).setLoginStatus("User");
++                        Intent intent = new Intent(LoginActivity.this,ProfileActivity.class);
++                        String name = LoginText.getText().toString();
++                        intent.putExtra("name", name);
++
++//                        if(LoginText.getText().toString().equals("admin") && PasswordText.getText().toString().equals("admin")){
++//                            ((GlobalApplication) getApplication()).setLoginStatus("Admin");
++//                        }
++
++                        startActivity(intent);
+                     }else
+                         Toast.makeText(LoginActivity.this, "Aвторизация провалена", Toast.LENGTH_SHORT).show();
+ 
+Index: app/src/main/java/com/example/ksinfo/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.ksinfo;\r\n\r\npublic class User {\r\n\r\n    String email;\r\n    String password;\r\n\r\n    public User(){\r\n\r\n    }\r\n\r\n    public  User(String email, String password){\r\n        this.email = email;\r\n        this.password = password;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/ksinfo/User.java	(revision 4394092f4d4259df3b9b6b3f897c7227dfdf2fc8)
++++ app/src/main/java/com/example/ksinfo/User.java	(date 1608223824038)
+@@ -2,16 +2,43 @@
+ 
+ public class User {
+ 
+-    String email;
+-    String password;
++    public String email, Name, Patronymic, Surname, group;
++    public int role;
+ 
+     public User(){
+ 
+     }
+ 
+-    public  User(String email, String password){
++    public  User(String email, String Name, String Patronymic, String Surname, String group, int role){
+         this.email = email;
+-        this.password = password;
++        this.Name = Name;
++        this.Patronymic = Patronymic;
++        this.Surname = Surname;
++        this.group = group;
++        this.role = role;
++    }
++
++    public String getEmail() {
++        return email;
++    }
++
++    public String getName() {
++        return Name;
+     }
+ 
++    public String getPatronymic() {
++        return Patronymic;
++    }
++
++    public String getSurname() {
++        return Surname;
++    }
++
++    public String getGroup() {
++        return group;
++    }
++
++    public int getRole() {
++        return role;
++    }
+ }
