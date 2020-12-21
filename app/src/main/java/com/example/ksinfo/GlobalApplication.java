@@ -1,6 +1,9 @@
 package com.example.ksinfo;
 
 import android.app.Application;
+import android.widget.ArrayAdapter;
+
+import com.example.ksinfo.Model.AdditionalEducation;
 
 public  class GlobalApplication extends Application {
 
@@ -35,6 +38,8 @@ public  class GlobalApplication extends Application {
     public void setLoginStatus(String loginVariable){
         this.loginStatus = loginVariable;
     }
+
+    public static AdditionalEducation[] MasAdditional;
 
 
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ksinfo.Model.AdditionalEducation;
 import com.example.ksinfo.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView PasswordText;
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDataBase;
+    ListView listViewAdditionalEducation;
 
 
     @Override
@@ -50,8 +53,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 signIn(LoginText.getText().toString(), PasswordText.getText().toString());
 
-//                Snackbar.make(activity_login, "Пользователь не найден", Snackbar.LENGTH_LONG).show();
-
                 ((GlobalApplication) getApplication()).setLoginStatus("User");
                 Intent intent = new Intent(LoginActivity.this,ProfileActivity.class);
 
@@ -64,9 +65,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 startActivity(intent);
-
-
-
             }
         });
 
@@ -89,30 +87,6 @@ public class LoginActivity extends AppCompatActivity {
 
                         Toast.makeText(LoginActivity.this, "Aвторизация успешна", Toast.LENGTH_SHORT).show();
 
-                        final DatabaseReference UserRef = mDataBase.getReference("Users");
-                        UserRef.orderByChild("email").equalTo(LoginText.getText().toString()).addChildEventListener(new ChildEventListener() {
-
-                            @Override
-                            public void onChildAdded( DataSnapshot snapshot, String previousChildName) {
-                                User user = snapshot.getValue(User.class);
-                                LoginText.setText(user.Name);
-
-                            }
-                            @Override
-                            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                            }
-                            @Override
-                            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-                            }
-                            @Override
-                            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                            }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                            }
-                        });
-
-
                         ((GlobalApplication) getApplication()).setLoginStatus("User");
                         Intent intent = new Intent(LoginActivity.this,ProfileActivity.class);
                         String name = LoginText.getText().toString();
@@ -122,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                             ((GlobalApplication) getApplication()).setLoginStatus("Admin");
                         }
 
+                        Model();
                         startActivity(intent);
                     }else
                         Toast.makeText(LoginActivity.this, "Aвторизация провалена", Toast.LENGTH_SHORT).show();
@@ -130,5 +105,52 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
         
+        public void Model(){
+            final DatabaseReference UserRef = mDataBase.getReference("Users");
+            UserRef.orderByChild("email").equalTo(LoginText.getText().toString()).addChildEventListener(new ChildEventListener() {
 
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @NonNull String previousChildName) {
+                User user = snapshot.getValue(User.class);
+                LoginText.setText(user.Name);
+            }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            }
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+            }
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+            final DatabaseReference AdditionalEducationRef = mDataBase.getReference("additional_education");
+            AdditionalEducationRef.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    int i = 0;
+                    for(DataSnapshot sh : snapshot.getChildren()) {
+                        AdditionalEducation additionalEducation = sh.getValue(AdditionalEducation.class);
+                        GlobalApplication.MasAdditional[i] = additionalEducation;
+                        i++;
+                    }
+                }
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                }
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+}
 }
