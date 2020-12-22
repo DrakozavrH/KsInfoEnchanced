@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ksinfo.Model.AdditionalEducation;
 import com.example.ksinfo.Model.Events;
+import com.example.ksinfo.Model.News;
 import com.example.ksinfo.Model.User;
 import com.example.ksinfo.Model.UserStatic;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private List<AdditionalEducation> listAdd;
     private List<Events> listEvents;
+    private List<News> listNews;
 
 
     @Override
@@ -61,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
         listAdd = new ArrayList<>();
         listEvents = new ArrayList<>();
+        listNews = new ArrayList<>();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,8 +111,10 @@ public class LoginActivity extends AppCompatActivity {
                     GlobalApplication.MasAdd = listAdd;
                     EventMet();
                     GlobalApplication.MasEvents = listEvents;
+                    NewMet();
 
-                    ((GlobalApplication) getApplication()).setLoginStatus("User");
+
+                    ((GlobalApplication) getApplication()).setLoginStatus("Admin");
                     Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                     String name = LoginText.getText().toString();
                     intent.putExtra("name", name);
@@ -190,6 +195,24 @@ public class LoginActivity extends AppCompatActivity {
                     Events events = ds.getValue(Events.class);
                     assert events != null;
                     listEvents.add(events);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        commandsRef.addListenerForSingleValueEvent(eventListener);
+    }
+
+    public void NewMet(){
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference commandsRef = rootRef.child("News");
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    News news = ds.getValue(News.class);
+                    assert news != null;
+                    listNews.add(news);
                 }
             }
             @Override
