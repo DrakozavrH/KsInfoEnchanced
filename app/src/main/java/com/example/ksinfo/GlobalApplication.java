@@ -5,7 +5,6 @@ import android.app.Application;
 import com.example.ksinfo.Model.AdditionalEducation;
 
 import com.example.ksinfo.Model.AdditionalEducation;
-import com.example.ksinfo.Model.Days;
 import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.News;
 

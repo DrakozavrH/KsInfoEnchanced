@@ -3,6 +3,7 @@ package com.example.ksinfo.Model;
 import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.io.Serializable;
+
 @IgnoreExtraProperties
 public class Lesson implements Serializable {
     public String lesson_1;
