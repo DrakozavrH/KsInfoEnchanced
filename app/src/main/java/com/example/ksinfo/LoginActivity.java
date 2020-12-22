@@ -2,10 +2,8 @@ package com.example.ksinfo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,7 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ksinfo.Model.AdditionalEducation;
+import com.example.ksinfo.Model.Days;
 import com.example.ksinfo.Model.Events;
+import com.example.ksinfo.Model.Lesson;
 import com.example.ksinfo.Model.News;
 import com.example.ksinfo.Model.User;
 import com.example.ksinfo.Model.UserStatic;
@@ -28,7 +28,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     private List<AdditionalEducation> listAdd;
     private List<Events> listEvents;
     private List<News> listNews;
+    private List<Lesson> listLesson;
 
 
     @Override
@@ -64,28 +64,12 @@ public class LoginActivity extends AppCompatActivity {
         listAdd = new ArrayList<>();
         listEvents = new ArrayList<>();
         listNews = new ArrayList<>();
+        listLesson = new ArrayList<>();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn(LoginText.getText().toString(), PasswordText.getText().toString());
-
-//                Snackbar.make(activity_login, "Пользователь не найден", Snackbar.LENGTH_LONG).show();
-
-                ((GlobalApplication) getApplication()).setLoginStatus("User");
-                //Intent intent = new Intent(LoginActivity.this,ProfileActivity.class);
-
-                String name = LoginText.getText().toString();
-
-                //intent.putExtra("name", name);
-
-                if (LoginText.getText().toString().equals("admin") && PasswordText.getText().toString().equals("admin")) {
-                    ((GlobalApplication) getApplication()).setLoginStatus("Admin");
-                }
-
-                //startActivity(intent);
-
-
             }
         });
 
@@ -108,10 +92,13 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Aвторизация успешна", Toast.LENGTH_SHORT).show();
                     UserMet();
                     AdditionalEducationMet();
-                    GlobalApplication.MasAdd = listAdd;
+                    GlobalApplication.listAdd = listAdd;
                     EventMet();
-                    GlobalApplication.MasEvents = listEvents;
+                    GlobalApplication.listEvents = listEvents;
                     NewMet();
+                    GlobalApplication.listNews = listNews;
+                    LessonMet();
+
 
 
                     ((GlobalApplication) getApplication()).setLoginStatus("Admin");
@@ -130,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+    //Прогрузка пользователя
     public void UserMet() {
         final DatabaseReference UserRef = mDataBase.getReference("Users");
         UserRef.orderByChild("email").equalTo(LoginText.getText().toString()).addChildEventListener(new ChildEventListener() {
@@ -165,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
-
+    //Прогрузка кружков
     public void AdditionalEducationMet(){
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference commandsRef = rootRef.child("additional_education");
@@ -184,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
         };
         commandsRef.addListenerForSingleValueEvent(eventListener);
     }
-
+    //Прогрузка мероприятий
     public void EventMet(){
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference commandsRef = rootRef.child("Events");
@@ -202,7 +189,7 @@ public class LoginActivity extends AppCompatActivity {
         };
         commandsRef.addListenerForSingleValueEvent(eventListener);
     }
-
+    //Прогрузка новостей
     public void NewMet(){
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference commandsRef = rootRef.child("News");
@@ -220,4 +207,31 @@ public class LoginActivity extends AppCompatActivity {
         };
         commandsRef.addListenerForSingleValueEvent(eventListener);
     }
+    //Прогрузка уроков
+    public void LessonMet(){
+        String[] groups = new String[]{"Schedule/1-ISP11-14","Schedule/2-ISP11-11","Schedule/3-ISP9-4","Schedule/4-ISP9-1"};
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        for (int i = 0; i < 4; i++) {
+            DatabaseReference commandsRef = rootRef.child(groups[i]);
+            ValueEventListener eventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Days days = new Days();
+                    listLesson.clear();
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        Lesson lesson = ds.getValue(Lesson.class);
+                        assert lesson != null;
+                        listLesson.add(lesson);
+                    }
+                    days.listDay.add(listLesson);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            };
+            commandsRef.addListenerForSingleValueEvent(eventListener);
+        }
+    }
+
 }
