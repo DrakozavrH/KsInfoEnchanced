@@ -43,7 +43,8 @@ public  class GlobalApplication extends Application {
         this.loginStatus = loginVariable;
     }
 
-    public static AdditionalEducation[] MasAdd = new AdditionalEducation[5];
+    public static List<AdditionalEducation> MasAdd = new ArrayList<>();
+
 
 
 

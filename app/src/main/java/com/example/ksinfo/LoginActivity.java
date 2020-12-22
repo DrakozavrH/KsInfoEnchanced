@@ -15,16 +15,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ksinfo.Model.AdditionalEducation;
 import com.example.ksinfo.Model.User;
+import com.example.ksinfo.Model.UserStatic;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
@@ -34,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
     TextView PasswordText;
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDataBase;
+    private DatabaseReference dataBase;
+    private List<AdditionalEducation> listTemp;
 
 
     @Override
@@ -49,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDataBase = FirebaseDatabase.getInstance();
+        dataBase = FirebaseDatabase.getInstance().getReference("additional_education");
+        listTemp = new ArrayList<>();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +99,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
 
                     Toast.makeText(LoginActivity.this, "Aвторизация успешна", Toast.LENGTH_SHORT).show();
-                    Model();
+                    UserMet();
+                    AdditionalEducationMet();
+                    GlobalApplication.MasAdd = listTemp;
 
                     ((GlobalApplication) getApplication()).setLoginStatus("User");
                     Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
@@ -110,7 +120,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void Model() {
+    public void UserMet() {
+        final DatabaseReference AddRef = mDataBase.getReference("additional_education");
+
         final DatabaseReference UserRef = mDataBase.getReference("Users");
         UserRef.orderByChild("email").equalTo(LoginText.getText().toString()).addChildEventListener(new ChildEventListener() {
 
@@ -118,6 +130,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
                 User user = snapshot.getValue(User.class);
                 LoginText.setText(user.Name);
+                UserStatic.email = user.email;
+                UserStatic.group = user.group;
+                UserStatic.Name = user.Name;
+                UserStatic.Patronymic = user.Patronymic;
+                UserStatic.role = user.role;
+                UserStatic.Surname = user.Surname;
 
             }
 
@@ -137,129 +155,25 @@ public class LoginActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-        final DatabaseReference AddRef1 = mDataBase.getReference("additional_education");
-        AddRef1.orderByChild("id").equalTo("1").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                AdditionalEducation additionalEducation = snapshot.getValue(AdditionalEducation.class);
-                GlobalApplication.MasAdd[0] = additionalEducation;
-            }
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-
-        final DatabaseReference AddRef2 = mDataBase.getReference("additional_education");
-        AddRef2.orderByChild("id").equalTo("2").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                AdditionalEducation additionalEducation = snapshot.getValue(AdditionalEducation.class);
-                GlobalApplication.MasAdd[1] = additionalEducation;
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-
-        final DatabaseReference AddRef3 = mDataBase.getReference("additional_education");
-        AddRef3.orderByChild("id").equalTo("3").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                AdditionalEducation additionalEducation = snapshot.getValue(AdditionalEducation.class);
-                GlobalApplication.MasAdd[2] = additionalEducation;
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-
-        final DatabaseReference AddRef4 = mDataBase.getReference("additional_education");
-        AddRef4.orderByChild("id").equalTo("4").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                AdditionalEducation additionalEducation = snapshot.getValue(AdditionalEducation.class);
-                GlobalApplication.MasAdd[3] = additionalEducation;
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-            final DatabaseReference AddRef5 = mDataBase.getReference("additional_education");
-        AddRef5.orderByChild("id").equalTo("5").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                AdditionalEducation additionalEducation = snapshot.getValue(AdditionalEducation.class);
-                GlobalApplication.MasAdd[4] = additionalEducation;
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
     }
 
+    public void AdditionalEducationMet(){
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference commandsRef = rootRef.child("additional_education");
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    AdditionalEducation additionalEducation = ds.getValue(AdditionalEducation.class);
+                    assert additionalEducation != null;
+                    listTemp.add(additionalEducation);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        commandsRef.addListenerForSingleValueEvent(eventListener);
+    }
 }
