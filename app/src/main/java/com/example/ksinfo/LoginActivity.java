@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ksinfo.Model.AdditionalEducation;
+import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.User;
 import com.example.ksinfo.Model.UserStatic;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,7 +40,9 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDataBase;
     private DatabaseReference dataBase;
-    private List<AdditionalEducation> listTemp;
+
+    private List<AdditionalEducation> listAdd;
+    private List<Events> listEvents;
 
 
     @Override
@@ -49,14 +52,15 @@ public class LoginActivity extends AppCompatActivity {
 
         LoginText = findViewById(R.id.LoginText);
         PasswordText = findViewById(R.id.PasswordText);
-
         Button loginButton = findViewById(R.id.LoginButton);
         Button guestButton = findViewById(R.id.NoRegistrationButton);
 
         mAuth = FirebaseAuth.getInstance();
         mDataBase = FirebaseDatabase.getInstance();
         dataBase = FirebaseDatabase.getInstance().getReference("additional_education");
-        listTemp = new ArrayList<>();
+
+        listAdd = new ArrayList<>();
+        listEvents = new ArrayList<>();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +105,9 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Aвторизация успешна", Toast.LENGTH_SHORT).show();
                     UserMet();
                     AdditionalEducationMet();
-                    GlobalApplication.MasAdd = listTemp;
+                    GlobalApplication.MasAdd = listAdd;
+                    EventMet();
+                    GlobalApplication.MasEvents = listEvents;
 
                     ((GlobalApplication) getApplication()).setLoginStatus("User");
                     Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
@@ -121,15 +127,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void UserMet() {
-        final DatabaseReference AddRef = mDataBase.getReference("additional_education");
-
         final DatabaseReference UserRef = mDataBase.getReference("Users");
         UserRef.orderByChild("email").equalTo(LoginText.getText().toString()).addChildEventListener(new ChildEventListener() {
 
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
                 User user = snapshot.getValue(User.class);
-                LoginText.setText(user.Name);
                 UserStatic.email = user.email;
                 UserStatic.group = user.group;
                 UserStatic.Name = user.Name;
@@ -167,10 +170,28 @@ public class LoginActivity extends AppCompatActivity {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     AdditionalEducation additionalEducation = ds.getValue(AdditionalEducation.class);
                     assert additionalEducation != null;
-                    listTemp.add(additionalEducation);
+                    listAdd.add(additionalEducation);
                 }
             }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        commandsRef.addListenerForSingleValueEvent(eventListener);
+    }
+
+    public void EventMet(){
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference commandsRef = rootRef.child("Events");
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Events events = ds.getValue(Events.class);
+                    assert events != null;
+                    listEvents.add(events);
+                }
+            }
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         };
