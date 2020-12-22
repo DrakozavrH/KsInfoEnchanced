@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.Gravity;
@@ -31,13 +32,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ksinfo.Adapters.MyAdapter;
 import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.Item;
+import com.example.ksinfo.Model.News;
 import com.example.ksinfo.Model.User;
 import com.example.ksinfo.Model.UserStatic;
 
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -71,10 +75,9 @@ public class ProfileActivity extends AppCompatActivity {
         ProfileDescriptionTextButton = findViewById(R.id.ProfileDescriptionTextButton);
         TodayInfoText = findViewById(R.id.TodayInfoText);
         NoNewsOrEventsText = findViewById(R.id.NoNewsOrEventsText);
-
-
         final Button EventsButton = findViewById(R.id.EventsButton);
         final Button NewsButton = findViewById(R.id.NewsButton);
+
 
 
 
@@ -84,48 +87,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EventsButton.setBackgroundColor(ContextCompat.getColor(getBaseContext(),R.color.KsBlue));
                 NewsButton.setBackgroundColor(ContextCompat.getColor(getBaseContext(),R.color.KsLightBlue));
-
-                //TODO получение мероприятий из бд в виде числа, месяца, текста ссылки, адреса ссылки и описания
-
-                if(GlobalApplication.listEvents.isEmpty()){
-                    NoNewsOrEventsText.setText("Нет данных о мероприятиях");
-                }else {
-                    NoNewsOrEventsText.setVisibility(View.GONE);
-
-                    LinearLayout newsOrEventsList = findViewById(R.id.NewsOrEventsList);
-                    LayoutInflater inflater = getLayoutInflater();
-
-                    for (int i = 0; i < GlobalApplication.listEvents.size(); i++) {
-                        View myLayout = inflater.inflate(R.layout.event_layout,newsOrEventsList,false);
-
-
-                        TextView eventDateNumber =(TextView)myLayout.findViewById(R.id.EventDateNumberTextView);
-                        TextView eventDateMonth = (TextView)myLayout.findViewById(R.id.EventDateMonthTextView);
-                        TextView eventTitle =(TextView)myLayout.findViewById(R.id.EventTitle);
-                        TextView eventDescription =(TextView)myLayout.findViewById(R.id.EventDescription);
-
-                        //eventTitle.setText(GlobalApplication.listEvents.get(i).title.toString());
-                        eventTitle.setClickable(true);
-                        eventTitle.setMovementMethod(LinkMovementMethod.getInstance());
-                        String title = String.format("<a href='{0}'> {1} </a>",GlobalApplication.listEvents.get(i).link,GlobalApplication.listEvents.get(i).title);
-                        eventTitle.setText(Html.fromHtml(title));
-
-
-                        eventDescription.setText(GlobalApplication.listEvents.get(i).text.toString());
-
-
-                        String[] dateArray = GlobalApplication.listEvents.get(i).date.split(" ");
-                        eventDateMonth.setText(dateArray[1].toString());
-                        eventDateNumber.setText(dateArray[0].toString());
-
-
-
-                        newsOrEventsList.addView(myLayout);
-                    }
-
-                }
-
-
+                inflateEvents();
             }
         });
 
@@ -134,12 +96,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 NewsButton.setBackgroundColor(ContextCompat.getColor(getBaseContext(),R.color.KsBlue));
                 EventsButton.setBackgroundColor(ContextCompat.getColor(getBaseContext(),R.color.KsLightBlue));
-
-                //TODO получение новостей из бд в виде даты, текста ссылки и адреса ссылки
-
-                NoNewsOrEventsText.setText("Нет данных о новостях");
-
-
+                inflateNews();
             }
         });
 
@@ -177,6 +134,8 @@ public class ProfileActivity extends AppCompatActivity {
                 rightMenuDialog();
             }
         });
+
+
 
 
 
@@ -288,14 +247,21 @@ public class ProfileActivity extends AppCompatActivity {
         String formattedDate = df.format(c);
         TodayInfoText.setText(formattedDate);
 
-        //Setting default events
 
-        //TODO получение мероприятий из бд в виде числа, месяца, текста ссылки, адреса ссылки и описания
+        //Setting default events
         NoNewsOrEventsText.setText("Нет данных о мероприятиях");
 
 
+        //TODO убрать задержку после добавления загрузочного экрана
+        Runnable r = new Runnable() {
+            @Override
+            public void run(){
+                inflateEvents();
+            }
+        };
 
-
+        Handler h = new Handler();
+        h.postDelayed(r, 1500);
 
     }
 
@@ -493,8 +459,110 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    
 
 
+    //Заполнение мероприятий
+    private void inflateEvents(){
+
+        if(GlobalApplication.listEvents.isEmpty()){
+            NoNewsOrEventsText.setText("Нет данных о мероприятиях");
+        }else {
+            NoNewsOrEventsText.setVisibility(View.GONE);
+            LinearLayout newsOrEventsList = findViewById(R.id.NewsOrEventsList);
+            LayoutInflater inflater = getLayoutInflater();
+
+
+            List<Events> eventList = GlobalApplication.listEvents;
+            Collections.sort(eventList, new Comparator<Events>() {
+                @Override
+                public int compare(Events object1, Events object2) {
+                    String[] arr1 = object1.date.split(" ");
+                    String[] arr2 = object2.date.split(" ");
+
+                    return arr1[0].compareTo(arr2[0]);
+                }
+            });
+
+
+
+            newsOrEventsList.removeAllViews();
+
+
+
+            for (int i = 0; i < eventList.size(); i++) {
+                View myLayout = inflater.inflate(R.layout.event_layout,newsOrEventsList,false);
+
+                TextView eventDateNumber =(TextView)myLayout.findViewById(R.id.EventDateNumberTextView);
+                TextView eventDateMonth = (TextView)myLayout.findViewById(R.id.EventDateMonthTextView);
+                TextView eventTitle =(TextView)myLayout.findViewById(R.id.EventTitle);
+                TextView eventDescription =(TextView)myLayout.findViewById(R.id.EventDescription);
+
+                //eventTitle.setText(GlobalApplication.listEvents.get(i).title.toString());
+                eventTitle.setClickable(true);
+                eventTitle.setMovementMethod(LinkMovementMethod.getInstance());
+                String title = MessageFormat.format("<a href={0}> {1} </a>",eventList.get(i).link,eventList.get(i).title);
+                eventTitle.setText(Html.fromHtml(title));
+                eventTitle.setLinkTextColor(getResources().getColor(R.color.KsOrange));
+
+
+                eventDescription.setText(eventList.get(i).text.toString());
+
+
+                String[] dateArray = eventList.get(i).date.split(" ");
+                eventDateMonth.setText(dateArray[1].toString());
+                eventDateNumber.setText(dateArray[0].toString());
+
+
+
+                newsOrEventsList.addView(myLayout);
+            }
+
+        }
+
+
+
+    }
+
+
+    private void inflateNews(){
+
+        if(GlobalApplication.listNews.isEmpty()){
+            NoNewsOrEventsText.setText("Нет данных о новостях");
+        }else {
+            NoNewsOrEventsText.setVisibility(View.GONE);
+            LinearLayout newsOrEventsList = findViewById(R.id.NewsOrEventsList);
+            LayoutInflater inflater = getLayoutInflater();
+
+
+            List<News> newsList = GlobalApplication.listNews;
+            newsOrEventsList.removeAllViews();
+
+
+
+            for (int i = 0; i < newsList.size(); i++) {
+                View myLayout = inflater.inflate(R.layout.news_layout,newsOrEventsList,false);
+
+                TextView newsTitle = (TextView)myLayout.findViewById(R.id.NewsTitleTextView);
+                TextView newsDate = (TextView)myLayout.findViewById(R.id.NewsDateTextView);
+
+                //eventTitle.setText(GlobalApplication.listEvents.get(i).title.toString());
+                newsTitle.setClickable(true);
+                newsTitle.setMovementMethod(LinkMovementMethod.getInstance());
+                String title = MessageFormat.format("<a href={0}> {1} </a>",newsList.get(i).link,newsList.get(i).text);
+                newsTitle.setText(Html.fromHtml(title));
+                newsTitle.setLinkTextColor(getResources().getColor(R.color.KsOrange));
+
+
+                newsDate.setText(newsList.get(i).date.toString());
+
+
+                newsOrEventsList.addView(myLayout);
+            }
+
+        }
+
+    }
 
 
 
