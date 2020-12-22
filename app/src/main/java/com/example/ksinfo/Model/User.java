@@ -15,7 +15,6 @@ public class User implements Serializable {
     public int role;
 
     public User(){
-
     }
 
     public  User(String Name, String Patronymic, String Surname, String email, String group, int role){

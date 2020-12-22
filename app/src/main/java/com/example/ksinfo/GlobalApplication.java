@@ -5,6 +5,7 @@ import android.app.Application;
 import com.example.ksinfo.Model.AdditionalEducation;
 
 import com.example.ksinfo.Model.AdditionalEducation;
+import com.example.ksinfo.Model.Events;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,7 @@ public  class GlobalApplication extends Application {
     }
 
     public static List<AdditionalEducation> MasAdd = new ArrayList<>();
+    public static List<Events> MasEvents = new ArrayList<>();
 
 
 
