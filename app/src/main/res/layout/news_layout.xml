@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/KsWhite"
-            android:textSize="28sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:text="@string/NewsTitleDefault"
             android:linksClickable="true"
