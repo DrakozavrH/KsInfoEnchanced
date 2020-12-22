@@ -146,6 +146,11 @@
     <string name="NoteOrderTypeButtonDefault">Тип документа для выдачи</string>
     <string name="MakeOrderButton">Сформировать запрос</string>
 
+    <!-- Message layout  -->
+    <string name="DefaultMessageHeader">Группе 3ИСП9-4</string>
+    <string name="DefaultMessageText">Текст сообщения, текст сообщения, текст сообщения, текст сообщения</string>
+    <string name="DefaultMessageTime">12:00</string>
+
     <string name="Cabinet">Кабинет</string>
     <string name="Teacher">Преподаватель</string>
 

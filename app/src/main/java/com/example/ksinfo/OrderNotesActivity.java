@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -67,6 +70,110 @@ public class OrderNotesActivity extends AppCompatActivity {
             }
         });
 
+        //Переменные основной страницы
+        Button noteTypeButton = findViewById(R.id.ChooseNoteTypeButton);
+        EditText noteForEditText = findViewById(R.id.NoteForEditText);
+        final Button orderTypeButton = findViewById(R.id.OrderTypeButton);
+        Button submitOrderButton = findViewById(R.id.SubmitOrderButton);
+        TextView noteForTextView = findViewById(R.id.NoteForTextView);
+
+
+        noteTypeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                noteTypeDialog();
+            }
+        });
+
+        orderTypeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                orderTypeDialog();
+            }
+        });
+
+        submitOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //TODO добаление новой записи в бд
+
+            }
+        });
+
+
+    }
+
+    private void noteTypeDialog(){
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final CharSequence[] options = {"Справка по требованию","Справка в военный комиссариат"};
+
+        builder.setTitle("Выберите тип справки").setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Button button = findViewById(R.id.ChooseNoteTypeButton);
+                button.setText(options[which]);
+
+                TextView noteForTextView = findViewById(R.id.NoteForTextView);
+
+                switch (which){
+
+                    case 0:{
+                        noteForTextView.setText("Справка для предоставления в");
+                    }break;
+                    case 1:{
+                        noteForTextView.setText("Справка для предоставления в военный комиссариат");
+                    }
+
+                }
+
+
+            }
+        });
+
+        menuDialog = builder.create();
+        menuDialog.show();
+
+    }
+
+    private void orderTypeDialog(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        Button button = findViewById(R.id.ChooseNoteTypeButton);
+
+        final CharSequence[] options;
+
+        if(button.getText().equals("Справка по требованию")){
+
+             options = new CharSequence[]{"Справка с печатью", "Электронная справка"};
+
+        }else if(button.getText().equals("Справка в военный комиссариат")){
+
+              options = new CharSequence[]{"Справка с печатью"};
+
+        }else{
+             options = new CharSequence[]{""};
+        }
+
+
+
+        builder.setTitle("Выберите тип справки").setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Button orderTypeButton = findViewById(R.id.OrderTypeButton);
+                orderTypeButton.setText(options[which]);
+
+
+            }
+        });
+
+        menuDialog = builder.create();
+        menuDialog.show();
 
     }
 

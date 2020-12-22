@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:id="@+id/MessageBackground"
+    android:background="@color/KsLightBlue"
+    android:padding="10dp"
+    >
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="220dp"
+                android:autoSizeTextType="uniform"
+                android:layout_height="wrap_content"
+                android:textColor="@color/KsWhite"
+                android:textSize="28sp"
+                android:text="@string/DefaultMessageHeader"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textColor="@color/KsWhite"
+                android:text="@string/DefaultMessageTime"
+                android:layout_marginLeft="40dp"
+                android:layout_gravity="center"
+                />
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/closeicon6"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/KsWhite"
+            android:textSize="20sp"
+            android:text="@string/DefaultMessageText"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
