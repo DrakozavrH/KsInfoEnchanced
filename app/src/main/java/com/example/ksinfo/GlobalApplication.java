@@ -13,8 +13,6 @@ import java.util.List;
 
 public  class GlobalApplication extends Application {
 
-    // Статус пользователя(Гость/Студент/Админ)
-    private String loginStatus;
     //Имя пользователя(для отображения при переходе в личный кабинет с любой страницы)
     private String userName;
     //Выбранная пользователем группа
@@ -34,15 +32,6 @@ public  class GlobalApplication extends Application {
 
     public void setGroupName(String groupName) {
         this.groupName = groupName;
-    }
-
-    public String getLoginStatus(){
-        return loginStatus;
-    }
-
-
-    public void setLoginStatus(String loginVariable){
-        this.loginStatus = loginVariable;
     }
 
     //хранение кружков

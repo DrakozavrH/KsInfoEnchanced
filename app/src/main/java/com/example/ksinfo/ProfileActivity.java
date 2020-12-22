@@ -269,12 +269,12 @@ public class ProfileActivity extends AppCompatActivity {
 
             UsernameText.setText(Username);
 
-        }else if(((GlobalApplication) getApplication()).getLoginStatus().equals("Guest")){
+        }else if(UserStatic.role == 2){
 
             ProfileDescriptionText.setText("");
             ProfileDescriptionTextButton.setText("Зарегистрироваться");
 
-        }else if(((GlobalApplication) getApplication()).getLoginStatus().equals("Admin")){
+        }else if(UserStatic.role == 1){
             UsernameText.setText("AdminName");
             ProfileDescriptionText.setText("Администратор");
             ProfileDescriptionTextButton.setText("");
@@ -307,7 +307,7 @@ public class ProfileActivity extends AppCompatActivity {
         int buttonAmount = 9;
 
         // Добавление кнопки с сообщениями для администратора (+1)
-        if(((GlobalApplication) getApplication()).getLoginStatus().equals("Admin")){
+        if(UserStatic.role == 1){
             buttonAmount = 10;
         }
 
@@ -327,7 +327,7 @@ public class ProfileActivity extends AppCompatActivity {
             }*/
 
             //С регистрацией
-            if (((GlobalApplication) getApplication()).getLoginStatus().equals("User")) {
+            if (UserStatic.role == 0) {
 
                 switch (i) {
 
@@ -378,7 +378,7 @@ public class ProfileActivity extends AppCompatActivity {
                 items.add(item);
 
                 // Без регистрации
-            }else if(((GlobalApplication) getApplication()).getLoginStatus().equals("Guest")){
+            }else if(UserStatic.role == 2){
 
                 switch (i) {
 
@@ -429,7 +429,7 @@ public class ProfileActivity extends AppCompatActivity {
                 items.add(item);
 
                 //Администратор
-            }else if(((GlobalApplication) getApplication()).getLoginStatus().equals("Admin")){
+            }else if(UserStatic.role == 1){
 
                 switch (i) {
 

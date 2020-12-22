@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ksinfo.Adapters.MyAdapter;
 import com.example.ksinfo.Model.Item;
+import com.example.ksinfo.Model.UserStatic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +69,7 @@ public class ScheduleActivity extends AppCompatActivity {
         //TODO добавить изменение расписание в зависимости от выбранной в профиле группы
 
         //Удаление кнопки со сменой группы, если пользователь зарегистрирован
-        if(((GlobalApplication) getApplication()).getLoginStatus().equals("User") && ((GlobalApplication)getApplication()).getGroupName() != null){
+        if(UserStatic.role == 0 && ((GlobalApplication)getApplication()).getGroupName() != null){
             LinearLayout layout = findViewById(R.id.changeGroupLayout);
             layout.setVisibility(View.GONE);
 
@@ -192,7 +193,7 @@ public class ScheduleActivity extends AppCompatActivity {
         int buttonAmount = 9;
 
         // Добавление кнопки с сообщениями для администратора (+1)
-        if(((GlobalApplication) getApplication()).getLoginStatus().equals("Admin")){
+        if(UserStatic.role == 1){
             buttonAmount = 10;
         }
 
@@ -212,7 +213,7 @@ public class ScheduleActivity extends AppCompatActivity {
             }*/
 
             //С регистрацией
-            if (((GlobalApplication) getApplication()).getLoginStatus().equals("User")) {
+            if (UserStatic.role == 0) {
 
                 switch (i) {
 
@@ -263,7 +264,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 items.add(item);
 
                 // Без регистрации
-            }else if(((GlobalApplication) getApplication()).getLoginStatus().equals("Guest")){
+            }else if(UserStatic.role == 2){
 
                 switch (i) {
 
@@ -314,7 +315,7 @@ public class ScheduleActivity extends AppCompatActivity {
                 items.add(item);
 
                 //Администратор
-            }else if(((GlobalApplication) getApplication()).getLoginStatus().equals("Admin")){
+            }else if(UserStatic.role == 1){
 
                 switch (i) {
 

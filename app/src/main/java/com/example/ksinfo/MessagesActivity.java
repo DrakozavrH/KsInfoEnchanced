@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ksinfo.Adapters.MyAdapter;
 import com.example.ksinfo.Model.Item;
+import com.example.ksinfo.Model.UserStatic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -148,7 +149,7 @@ public class MessagesActivity extends AppCompatActivity {
         int buttonAmount = 9;
 
         // Добавление кнопки с сообщениями для администратора (+1)
-        if(((GlobalApplication) getApplication()).getLoginStatus().equals("Admin")){
+        if(UserStatic.role == 1){
             buttonAmount = 10;
         }
 
@@ -168,7 +169,7 @@ public class MessagesActivity extends AppCompatActivity {
             }*/
 
             //С регистрацией
-            if (((GlobalApplication) getApplication()).getLoginStatus().equals("User")) {
+            if (UserStatic.role == 0) {
 
                 switch (i) {
 
@@ -219,7 +220,7 @@ public class MessagesActivity extends AppCompatActivity {
                 items.add(item);
 
                 // Без регистрации
-            }else if(((GlobalApplication) getApplication()).getLoginStatus().equals("Guest")){
+            }else if(UserStatic.role == 2){
 
                 switch (i) {
 
@@ -270,7 +271,7 @@ public class MessagesActivity extends AppCompatActivity {
                 items.add(item);
 
                 //Администратор
-            }else if(((GlobalApplication) getApplication()).getLoginStatus().equals("Admin")){
+            }else if(UserStatic.role == 1){
 
                 switch (i) {
 

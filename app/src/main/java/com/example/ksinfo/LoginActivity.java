@@ -75,20 +75,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 signIn(LoginText.getText().toString(), PasswordText.getText().toString());
 
-                ((GlobalApplication) getApplication()).setLoginStatus("Admin");
-                String name = LoginText.getText().toString();
-
-                if (LoginText.getText().toString().equals("admin") && PasswordText.getText().toString().equals("admin")) {
-                    ((GlobalApplication) getApplication()).setLoginStatus("Admin");
-                }
-
             }
         });
 
         guestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((GlobalApplication) getApplication()).setLoginStatus("Guest");
                 Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                 startActivity(intent);
             }
@@ -110,19 +102,12 @@ public class LoginActivity extends AppCompatActivity {
                     NewMet();
                     GlobalApplication.listNews = listNews;
                     LessonMet();
-                    ClassroomsnMet();
+                    ClassroomsMet();
 
 
-                    ((GlobalApplication) getApplication()).setLoginStatus("Admin");
-
-                    ((GlobalApplication) getApplication()).setLoginStatus("Admin");
                     Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-                    String name = LoginText.getText().toString();
+                    String name = UserStatic.Name;
                     intent.putExtra("name", name);
-
-                    if (LoginText.getText().toString().equals("admin") && PasswordText.getText().toString().equals("admin")) {
-                        ((GlobalApplication) getApplication()).setLoginStatus("Admin");
-                    }
 
                     startActivity(intent);
                 } else
@@ -247,8 +232,8 @@ public class LoginActivity extends AppCompatActivity {
             commandsRef.addListenerForSingleValueEvent(eventListener);
         }
     }
-
-    public void ClassroomsnMet(){
+    //Прогрузка кабинетов
+    public void ClassroomsMet(){
         String[] groups = new String[]{"Classrooms/1-ISP11-14","Classrooms/2-ISP11-11","Classrooms/3-ISP9-4","Classrooms/4-ISP9-1"};
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         //for (int i = 0; i < 4; i++) {
