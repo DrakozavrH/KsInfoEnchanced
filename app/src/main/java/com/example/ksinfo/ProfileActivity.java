@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,6 +37,7 @@ import com.example.ksinfo.Model.UserStatic;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -101,7 +104,13 @@ public class ProfileActivity extends AppCompatActivity {
                         TextView eventTitle =(TextView)myLayout.findViewById(R.id.EventTitle);
                         TextView eventDescription =(TextView)myLayout.findViewById(R.id.EventDescription);
 
-                        eventTitle.setText(GlobalApplication.listEvents.get(i).title.toString());
+                        //eventTitle.setText(GlobalApplication.listEvents.get(i).title.toString());
+                        eventTitle.setClickable(true);
+                        eventTitle.setMovementMethod(LinkMovementMethod.getInstance());
+                        String title = String.format("<a href='{0}'> {1} </a>",GlobalApplication.listEvents.get(i).link,GlobalApplication.listEvents.get(i).title);
+                        eventTitle.setText(Html.fromHtml(title));
+
+
                         eventDescription.setText(GlobalApplication.listEvents.get(i).text.toString());
 
 
@@ -109,7 +118,7 @@ public class ProfileActivity extends AppCompatActivity {
                         eventDateMonth.setText(dateArray[1].toString());
                         eventDateNumber.setText(dateArray[0].toString());
 
-                        
+
 
                         newsOrEventsList.addView(myLayout);
                     }
