@@ -3,13 +3,16 @@ package com.example.ksinfo;
 import android.app.Application;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -24,6 +27,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ksinfo.Adapters.MyAdapter;
+import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.Item;
 import com.example.ksinfo.Model.User;
 import com.example.ksinfo.Model.UserStatic;
@@ -80,7 +84,38 @@ public class ProfileActivity extends AppCompatActivity {
 
                 //TODO получение мероприятий из бд в виде числа, месяца, текста ссылки, адреса ссылки и описания
 
-                NoNewsOrEventsText.setText("Нет данных о мероприятиях");
+                if(GlobalApplication.listEvents.isEmpty()){
+                    NoNewsOrEventsText.setText("Нет данных о мероприятиях");
+                }else {
+                    NoNewsOrEventsText.setVisibility(View.GONE);
+
+                    LinearLayout newsOrEventsList = findViewById(R.id.NewsOrEventsList);
+                    LayoutInflater inflater = getLayoutInflater();
+
+                    for (int i = 0; i < GlobalApplication.listEvents.size(); i++) {
+                        View myLayout = inflater.inflate(R.layout.event_layout,newsOrEventsList,false);
+
+
+                        TextView eventDateNumber =(TextView)myLayout.findViewById(R.id.EventDateNumberTextView);
+                        TextView eventDateMonth = (TextView)myLayout.findViewById(R.id.EventDateMonthTextView);
+                        TextView eventTitle =(TextView)myLayout.findViewById(R.id.EventTitle);
+                        TextView eventDescription =(TextView)myLayout.findViewById(R.id.EventDescription);
+
+                        eventTitle.setText(GlobalApplication.listEvents.get(i).title.toString());
+                        eventDescription.setText(GlobalApplication.listEvents.get(i).text.toString());
+
+
+                        String[] dateArray = GlobalApplication.listEvents.get(i).date.split(" ");
+                        eventDateMonth.setText(dateArray[1].toString());
+                        eventDateNumber.setText(dateArray[0].toString());
+
+                        
+
+                        newsOrEventsList.addView(myLayout);
+                    }
+
+                }
+
 
             }
         });
@@ -94,6 +129,7 @@ public class ProfileActivity extends AppCompatActivity {
                 //TODO получение новостей из бд в виде даты, текста ссылки и адреса ссылки
 
                 NoNewsOrEventsText.setText("Нет данных о новостях");
+
 
             }
         });
@@ -132,6 +168,8 @@ public class ProfileActivity extends AppCompatActivity {
                 rightMenuDialog();
             }
         });
+
+
 
     }
 

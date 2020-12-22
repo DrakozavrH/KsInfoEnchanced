@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@color/KsBlueDim">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/KsBlueDim">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menuHeader"
+            android:orientation="horizontal"
+            android:background="@color/KsBlue"
+            android:elevation="6dp"
+            >
+
+            <ImageView android:id="@+id/menuHeaderImage"
+                android:layout_width="51dp"
+                android:layout_height="51dp"
+                android:src="@drawable/backicon1"
+                android:paddingHorizontal="10dp"
+                android:layout_gravity="left"
+                android:layout_marginRight="10dp"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:layout_weight="0"/>
+
+            <TextView android:id="@+id/menuHeaderText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/MessageDescriptionActivityHeader"
+                android:textColor="@color/KsWhite"
+                android:autoSizeTextType="uniform"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:gravity="center"/>
+
+            <ImageButton
+                android:id="@+id/menuHeaderButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="?android:selectableItemBackground"
+                android:paddingVertical="10dp"
+                android:scaleType="fitCenter"
+
+                android:src="@drawable/menuheaderbuttonwhite" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_below="@id/menuHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            >
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/MessageDescriptionHeader"
+                    android:textSize="32sp"
+                    android:textColor="@color/KsWhite"
+                    android:textStyle="bold"
+                    android:text="@string/MessageDescriptionHeaderDefault"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="32sp"
+                        android:textColor="@color/KsWhite"
+                        android:textStyle="bold"
+                        android:text="@string/MessageDescriptionDateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:textSize="32sp"
+                        android:textColor="@color/KsWhite"
+                        android:textStyle="bold"
+                        android:text="@string/MessageDescriptionDateDefault"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:textSize="24sp"
+                    android:textColor="@color/KsWhite"
+                    android:text="@string/MessageDescriptionTextDefault"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+
+
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

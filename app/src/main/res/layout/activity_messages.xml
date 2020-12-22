@@ -58,7 +58,8 @@
         <ScrollView
             android:layout_below="@id/menuHeader"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp">
 
 
             <LinearLayout
@@ -75,6 +76,31 @@
         </ScrollView>
 
 
+        <LinearLayout
+            android:id="@+id/SendMessageButtonLayout"
+            android:background="@color/KsBlue"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:elevation="6dp"
+            android:layout_height="70dp"
+
+            >
+
+            <Button
+                android:id="@+id/SendMessageButton"
+                android:layout_width="wrap_content"
+                android:layout_weight="0"
+                style="@style/StandardButton"
+                android:paddingTop="10dp"
+                android:text="@string/SendNewMessageText"
+                android:paddingBottom="5dp"
+                android:autoSizeTextType="uniform"
+                android:padding="10dp"
+                android:layout_height="50dp"/>
+
+        </LinearLayout>
 
 
     </RelativeLayout>

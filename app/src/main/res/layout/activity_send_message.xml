@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@color/KsBlueDim"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/KsBlueDim">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/menuHeader"
+            android:orientation="horizontal"
+            android:background="@color/KsBlue"
+            android:elevation="6dp"
+            >
+
+            <ImageView android:id="@+id/menuHeaderImage"
+                android:layout_width="51dp"
+                android:layout_height="51dp"
+                android:src="@drawable/backicon1"
+                android:paddingHorizontal="10dp"
+                android:layout_gravity="left"
+                android:layout_marginRight="10dp"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:layout_weight="0"/>
+
+            <TextView android:id="@+id/menuHeaderText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/SendMessageActivityHeader"
+                android:textColor="@color/KsWhite"
+                android:autoSizeTextType="uniform"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:gravity="center"/>
+
+            <ImageButton
+                android:id="@+id/menuHeaderButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="?android:selectableItemBackground"
+                android:paddingVertical="10dp"
+                android:scaleType="fitCenter"
+
+                android:src="@drawable/menuheaderbuttonwhite" />
+        </LinearLayout>
+
+
+        <ScrollView
+            android:layout_below="@id/menuHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:id="@+id/mainContentLayout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/SendMessageHeader"
+                    android:textSize="28sp"
+                    android:textColor="@color/KsWhite"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="20dp" />
+
+
+                <FrameLayout
+                    android:layout_marginTop="5dp"
+                    android:background="@color/KsLightBlue"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/PhoneNumberEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/borderbottom"
+                        android:textSize="28sp"
+                        android:textColor="@color/KsWhite"
+                        android:paddingLeft="5dp"
+                        android:maxLength="40"
+
+                        />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/SendMessageFor"
+                    android:textSize="28sp"
+                    android:textColor="@color/KsWhite"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    />
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/ForAllButton"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_marginRight="2dp"
+                        android:text="@string/SendMessageForAll"
+                        android:textColor="@color/KsWhite"
+                        android:textSize="24dp"
+                        android:background="@color/KsBlue"
+                        android:layout_height="match_parent"/>
+
+                    <Button
+                        android:id="@+id/ForGroupButton"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
+                        android:layout_marginLeft="2dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/SendMessageForGroup"
+                        android:textColor="@color/KsWhite"
+                        android:textSize="24dp"
+                        android:background="@color/KsLightBlue" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/SendMessageMessage"
+                    android:textSize="28sp"
+                    android:textColor="@color/KsWhite"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    />
+
+
+                <FrameLayout
+                    android:background="@color/KsLightBlue"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/MessageTextEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:textSize="24sp"
+                        android:textColor="@color/KsWhite"
+                        android:background="@drawable/borderbottom"
+                        android:paddingLeft="5dp"
+                        android:gravity="top"
+                        android:layout_gravity="top"
+                        android:maxLength="250"
+                        />
+
+                </FrameLayout>
+
+                <Button
+                    android:id="@+id/SubmitMessageButton"
+                    android:layout_width="match_parent"
+                    android:background="@color/KsLightBlue"
+                    android:textColor="@color/KsWhite"
+                    android:textSize="28sp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/QuestionButton"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

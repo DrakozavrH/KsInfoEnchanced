@@ -151,6 +151,35 @@
     <string name="DefaultMessageText">Текст сообщения, текст сообщения, текст сообщения, текст сообщения</string>
     <string name="DefaultMessageTime">12:00</string>
 
+    <string name="SendNewMessageText">Отправить новое сообщение</string>
+    <string name="SendMessageActivityHeader">Отправка сообщений</string>
+
+    <string name="SendMessageHeader">Заголовок сообщения</string>
+    <string name="SendMessageFor">Назначение сообщения</string>
+    <string name="SendMessageForAll">Всем</string>
+    <string name="SendMessageForGroup">Группе</string>
+    <string name="SendMessageMessage">Сообщение</string>
+    <string name="SendMessageSend">Отправить</string>
+
+    <string name="MessageDescriptionActivityHeader">Сообщение</string>
+    <string name="MessageDescriptionHeaderDefault">Заголовок сообщения</string>
+    <string name="MessageDescriptionDateText">Дата отправки: </string>
+    <string name="MessageDescriptionDateDefault">дата</string>
+    <string name="MessageDescriptionTextDefault">Vivamus ultrices risus at erat placerat, vel consequat est sodales. Nunc in sem id massa vestibulum pharetra ac quis nibh. Ut malesuada luctus sodales. Maecenas elit lorem, porttitor vitae nisi et, tincidunt gravida mi. Mauris eget aliquam mauris. Proin viverra dignissim nisl eu accumsan. Sed eu tincidunt felis. Cras porttitor nulla sit amet dui rhoncus finibus. Morbi arcu nisi, aliquam in libero ut, lacinia pretium ligula. Aenean molestie, ligula vel accumsan luctus, turpis nunc pharetra tellus, sit amet dapibus ex mauris ut augue.</string>
+
+
+
+    <!-- News layout  -->
+    <string name="NewsTitleDefault">Заголовок новости</string>
+    <string name="NewsLinkDefault">www.google.com</string>
+    <string name="NewsDateDefault">01.01.2020</string>
+
+    <!-- News layout  -->
+    <string name="EventDateNumberDefault">29</string>
+    <string name="EventDateMonthDefault">Февраля</string>
+    <string name="EventTitleNumberDefault">Видеоэкскурсии по столичным паркам. «Зарядье»: природный парк под стенами Кремля</string>
+    <string name="EventDescriptionDefault">Участие студентов КС-54, членов ВПК и ВМК в организуемом "ДДТ на Таганке" и Российским военно-историческим обществом Лектории "Оборона Москвы и коренной перелом в Великой Отечественной Войне", посвящённом Году Славы и Памяти - 75 летию Победы в ВОВ</string>
+
     <string name="Cabinet">Кабинет</string>
     <string name="Teacher">Преподаватель</string>
 

@@ -32,6 +32,8 @@
         <activity android:name=".PsychologistActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".MessagesActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".SettingsActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".SendMessageActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".MessageDescriptionActivity" android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

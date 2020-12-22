@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -73,12 +75,40 @@ public class MessagesActivity extends AppCompatActivity {
 
         //Заполнение истории сообщений
         //TODO брать сообщения из бд
-
         LinearLayout historyLayout = findViewById(R.id.MessageHistoryLayout);
         LayoutInflater inflater = getLayoutInflater();
 
-        View myLayout = inflater.inflate(R.layout.message_layout,historyLayout,false);
-        historyLayout.addView(myLayout);
+        for (int i = 0; i < 10; i++) {
+            View myLayout = inflater.inflate(R.layout.message_layout,historyLayout,false);
+
+            myLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MessagesActivity.this,MessageDescriptionActivity.class);
+
+                    startActivity(intent);
+
+                }
+            });
+
+            if(i==0 || i ==3){
+                TextView textView =(TextView)myLayout.findViewById(R.id.MessageHeader);
+                textView.setTextColor(getResources().getColor(R.color.KsOrange));
+            }
+
+            historyLayout.addView(myLayout);
+        }
+
+
+        Button sendMessageButton = findViewById(R.id.SendMessageButton);
+        sendMessageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MessagesActivity.this,SendMessageActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }
