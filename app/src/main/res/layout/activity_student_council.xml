@@ -58,7 +58,8 @@
         <ScrollView
             android:layout_below="@id/menuHeader"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
 
             <LinearLayout
@@ -66,6 +67,453 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/KsLightBlue"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/KsWhite"
+                        android:textSize="28sp"
+                        android:text="@string/StudentCHeader"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/KsWhite"
+                        android:textSize="24sp"
+                        android:text="@string/StudentCDescription"
+                        android:layout_marginLeft="5dp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/KsLightBlue"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textColor="@color/KsWhite"
+                        android:textSize="28sp"
+                        android:text="@string/StudentCMembersHeader"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/KsWhite"
+                        android:textSize="24sp"
+                        android:text="@string/StudentCMembersDescription"
+                        android:layout_marginLeft="5dp"/>
+
+                    <LinearLayout
+                        android:background="@color/KsBlue"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/studmember1"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:text="@string/StudentCMember1Name"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember1Role"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember1Phone"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember1Email"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:background="@color/KsBlue"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/studmember2"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:text="@string/StudentCMember2Name"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember2Role"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember2Phone"
+                                android:layout_height="wrap_content"/>
+
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:background="@color/KsBlue"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/studmember3"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:text="@string/StudentCMember3Name"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="16sp"
+                                android:text="@string/StudentCMember3Role"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember3Phone"
+                                android:layout_height="wrap_content"/>
+
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:background="@color/KsBlue"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/studmember4"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:text="@string/StudentCMember4Name"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember4Role"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember4Phone"
+                                android:layout_height="wrap_content"/>
+
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:background="@color/KsBlue"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/studmember5"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:text="@string/StudentCMember5Name"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember5Role"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember5Phone"
+                                android:layout_height="wrap_content"/>
+
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:background="@color/KsBlue"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/studmember6"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:text="@string/StudentCMember6Name"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember6Role"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember6Phone"
+                                android:layout_height="wrap_content"/>
+
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:background="@color/KsBlue"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/studmember7"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:text="@string/StudentCMember7Name"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember7Role"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember7Phone"
+                                android:layout_height="wrap_content"/>
+
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:background="@color/KsBlue"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:src="@drawable/studmember8"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"/>
+
+                        <LinearLayout
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:text="@string/StudentCMember8Name"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember8Role"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textColor="@color/KsWhite"
+                                android:textSize="20sp"
+                                android:text="@string/StudentCMember8Phone"
+                                android:layout_height="wrap_content"/>
+
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
 
             </LinearLayout>

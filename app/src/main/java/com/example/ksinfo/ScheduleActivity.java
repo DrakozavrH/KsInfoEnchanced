@@ -3,7 +3,11 @@ package com.example.ksinfo;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -11,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -20,10 +25,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ksinfo.Adapters.MyAdapter;
+import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.Item;
+import com.example.ksinfo.Model.Schedule;
 import com.example.ksinfo.Model.UserStatic;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ScheduleActivity extends AppCompatActivity {
@@ -109,6 +119,22 @@ public class ScheduleActivity extends AppCompatActivity {
                 rightMenuDialog();
             }
         });
+
+
+        LinearLayout mainLinearLayout = findViewById(R.id.mainLinearLayout);
+        LayoutInflater inflater = getLayoutInflater();
+
+
+        mainLinearLayout.removeAllViews();
+
+
+        for (int i = 0; i < 6; i++) {
+            View myLayout = inflater.inflate(R.layout.scedule_day_layout,mainLinearLayout,false);
+
+            mainLinearLayout.addView(myLayout);
+        }
+
+
 
 
 

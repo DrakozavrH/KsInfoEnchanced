@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ksinfo.Adapters.MyAdapter;
 import com.example.ksinfo.Model.Item;
 import com.example.ksinfo.Model.UserStatic;
+import com.example.ksinfo.Model.Schedule;
 
 import java.util.ArrayList;
 import java.util.List;
