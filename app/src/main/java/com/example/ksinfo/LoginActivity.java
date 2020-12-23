@@ -79,6 +79,13 @@ public class LoginActivity extends AppCompatActivity {
         guestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EventMet();
+                GlobalApplication.listEvents = listEvents;
+                NewMet();
+                GlobalApplication.listNews = listNews;
+                LessonMet();
+                ClassroomsMet();
+
                 Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                 UserStatic.role = 2;
                 startActivity(intent);
@@ -125,6 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                 User user = snapshot.getValue(User.class);
                 UserStatic.email = user.email;
                 UserStatic.group = user.group;
+                UserStatic.groupBD = user.groupBD;
                 UserStatic.Name = user.Name;
                 UserStatic.Patronymic = user.Patronymic;
                 UserStatic.role = user.role;

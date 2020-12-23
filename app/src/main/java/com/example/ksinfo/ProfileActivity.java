@@ -261,7 +261,7 @@ public class ProfileActivity extends AppCompatActivity {
         };
 
         Handler h = new Handler();
-        h.postDelayed(r, 1500);
+        h.postDelayed(r, 10);
 
     }
 
