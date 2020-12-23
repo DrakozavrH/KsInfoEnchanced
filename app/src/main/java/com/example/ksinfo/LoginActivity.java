@@ -236,8 +236,8 @@ public class LoginActivity extends AppCompatActivity {
     public void ClassroomsMet(){
         String[] groups = new String[]{"Classrooms/1-ISP11-14","Classrooms/2-ISP11-11","Classrooms/3-ISP9-4","Classrooms/4-ISP9-1"};
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        //for (int i = 0; i < 4; i++) {
-            DatabaseReference commandsRef = rootRef.child(groups[0]);
+        for (int i = 0; i < 4; i++) {
+            DatabaseReference commandsRef = rootRef.child(groups[i]);
             ValueEventListener eventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -254,7 +254,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             };
             commandsRef.addListenerForSingleValueEvent(eventListener);
-        //}
+        }
     }
 
 }
