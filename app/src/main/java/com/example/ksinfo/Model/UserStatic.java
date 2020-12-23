@@ -5,7 +5,7 @@ public class UserStatic {
     public static String Name;
     public static String Patronymic;
     public static String Surname;
-    public static String group;
+    public static String group = "3-ИСП9-4";
     public static String groupBD;
     public static int role;
 

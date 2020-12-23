@@ -3,6 +3,7 @@ package com.example.ksinfo;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -30,6 +32,7 @@ import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.Item;
 import com.example.ksinfo.Model.Lesson;
 import com.example.ksinfo.Model.News;
+import com.example.ksinfo.Model.User;
 import com.example.ksinfo.Model.UserStatic;
 
 import org.w3c.dom.Text;
@@ -127,9 +130,6 @@ public class ScheduleActivity extends AppCompatActivity {
 
         inflateSchedule();
 
-
-
-
     }
 
     private void showAlert(){
@@ -149,11 +149,8 @@ public class ScheduleActivity extends AppCompatActivity {
 
     private void changeGroupAlert(){
 
-        //TODO добавить получение списка групп из бд и изменение расписание в зависимости от выбранной в этом диалоге группы
-
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final CharSequence[] options = {"1-АСС11-3", "1-АСС9-5ВБ", "1-ИСП11-14", "1-ИСП11-15", "1-ИСП11-16", "1-ИСП11-17", "1-ИСП9-15ВБ", "1-ИСП9-16ВБ", "1-ИСП9-17ВБ", "1-ОСАТ11-5", "1-ОСАТ9-6", "1-ОСАТ9-7ВБ", "2-АСС11-2", "2-АСС9-2", "2-ИСП11-10", "2-ИСП11-11", "2-ИСП11-12", "2-ИСП11-13", "2-ИСП9-10-ВБ", "2-ИСП9-7", "2-ИСП9-8", "2-ИСП9-9-ВБ", "2-КС11-7", "2-КС9-9", "2-ОСАТ11-3", "2-ОСАТ11-4", "2-ОСАТ9-4", "2-ОСАТ9-5", "3-АСС11-1", "3-АСС9-1", "3-ИСП11-5", "3-ИСП11-6", "3-ИСП11-7", "3-ИСП11-8", "3-ИСП9-3", "3-ИСП9-4", "3-ИСП9-5-ВБ", "3-ИСП9-6-ВБ", "3-КС11-5", "3-КС11-6", "3-КС9-7", "3-КС9-8-ВБ", "3-ОСАТ11-1", "3-ОСАТ11-2", "3-ОСАТ9-2", "3-ОСАТ9-3", "4-ИСП9-1", "4-ИСП9-2-ВБ", "4-ОСАТ9-1", "4-ПКС9-3-ВБ", "4-ПКС9-4-ВБ"};
+        final CharSequence[] options = {"1-ИСП11-14","2-ИСП11-11","3-ИСП9-4","4-ИСП9-1"};
 
         builder.setTitle("Выбор группы").setItems(options, new DialogInterface.OnClickListener() {
             @Override
@@ -161,6 +158,10 @@ public class ScheduleActivity extends AppCompatActivity {
 
                 Button button = findViewById(R.id.changeGroupButton);
                 button.setText(options[which]);
+                UserStatic.group = options[which].toString();
+                LinearLayout linearLayout = findViewById(R.id.mainLinearLayout);
+                linearLayout.removeAllViews();
+                inflateSchedule();
 
             }
         });
@@ -407,12 +408,45 @@ public class ScheduleActivity extends AppCompatActivity {
             LinearLayout mainLinearLayout = findViewById(R.id.mainLinearLayout);
             LayoutInflater inflater = getLayoutInflater();
 
+            int groupId;
 
-            List<List<Lesson>> lessonList = GlobalApplication.listScheduleLesson;
+            Button changeGroupButton = findViewById(R.id.changeGroupButton);
+
+
+            switch(UserStatic.group){
+
+                case "1-ИСП11-14":{
+                    groupId = 0;
+                    changeGroupButton.setText("1-ИСП11-14");
+                }break;
+                case "2-ИСП11-11":{
+                    groupId =1;
+                    changeGroupButton.setText("2-ИСП11-11");
+                }break;
+                case "3-ИСП9-4":{
+                    groupId =2;
+                    changeGroupButton.setText("3-ИСП9-4");
+                }break;
+                case "4-ИСП9-1":{
+                    groupId =3;
+                    changeGroupButton.setText("4-ИСП9-1");
+                }break;
+                default:{
+                    Log.e("Ошибка 400SCA","Нет группы");
+                    groupId =0;
+                    changeGroupButton.setText("1-ИСП11-14");
+                }
+
+            }
 
 
 
-            for (int i = 0; i < GlobalApplication.listScheduleLesson.get(2).size(); i++) {
+
+
+            //List<List<Lesson>> lessonList = GlobalApplication.listScheduleLesson;
+
+
+            for (int i = 0; i < GlobalApplication.listScheduleLesson.get(groupId).size(); i++) {
                 View myLayout = inflater.inflate(R.layout.scedule_day_layout,mainLinearLayout,false);
 
                 Button lesson1Button =(Button)myLayout.findViewById(R.id.CardSubject1);
@@ -420,64 +454,90 @@ public class ScheduleActivity extends AppCompatActivity {
                 Button lesson3Button =(Button)myLayout.findViewById(R.id.CardSubject3);
                 Button lesson4Button =(Button)myLayout.findViewById(R.id.CardSubject4);
 
+                Button cabinet1Button =(Button)myLayout.findViewById(R.id.CardCabinet1);
+                Button cabinet2Button =(Button)myLayout.findViewById(R.id.CardCabinet2);
+                Button cabinet3Button =(Button)myLayout.findViewById(R.id.CardCabinet3);
+                Button cabinet4Button =(Button)myLayout.findViewById(R.id.CardCabinet4);
+
+
+
                 for (int j = 0; j < 4; j++) {
 
                     switch(j){
 
                         case 0:{
 
-                            if(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_1.equals("-")){
+                            if(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_1.equals("-")){
                                 TableRow tableRow1 = (TableRow)myLayout.findViewById(R.id.TableRow1);
                                 tableRow1.setVisibility(View.GONE);
 
-                            }else if (GlobalApplication.listScheduleLesson.get(2).get(i).lesson_1.equals(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_2)){
-                                lesson1Button.setText(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_1);
+                            }else if (GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_1.equals(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_2)){
+                                lesson1Button.setText(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_1);
                             }else{
-                                String string = new String(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_1 + "/" +GlobalApplication.listScheduleLesson.get(2).get(i).lesson_2);
+                                String string = new String(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_1 + "/" +GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_2);
                                 lesson1Button.setText(string);
                             }
 
+
+                            cabinet1Button.setText(GlobalApplication.listScheduleClassrooms.get(groupId).get(i).classroom_1);
+
                         }break;
                         case 1:{
-                            if(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_3.equals("-")){
+                            if(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_3.equals("-")){
                                 TableRow tableRow2 = (TableRow)myLayout.findViewById(R.id.TableRow2);
                                 tableRow2.setVisibility(View.GONE);
 
-                            }else if (GlobalApplication.listScheduleLesson.get(2).get(i).lesson_3.equals(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_4)){
-                                lesson2Button.setText(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_3);
+                            }else if (GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_3.equals(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_4)){
+                                lesson2Button.setText(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_3);
                             }else{
-                                String string = new String(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_3 + "/" +GlobalApplication.listScheduleLesson.get(2).get(i).lesson_4);
+                                String string = new String(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_3 + "/" +GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_4);
                                 lesson2Button.setText(string);
                             }
+
+                            cabinet2Button.setText(GlobalApplication.listScheduleClassrooms.get(groupId).get(i).classroom_3);
+
                         }break;
                         case 2:{
-                            if(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_5.equals("-")){
+                            if(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_5.equals("-")){
                                 TableRow tableRow3 = (TableRow)myLayout.findViewById(R.id.TableRow3);
                                 tableRow3.setVisibility(View.GONE);
 
-                            }else if (GlobalApplication.listScheduleLesson.get(2).get(i).lesson_5.equals(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_6)){
-                                lesson3Button.setText(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_5);
+                            }else if (GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_5.equals(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_6)){
+                                lesson3Button.setText(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_5);
                             }else{
-                                String string = new String(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_5 + "/" +GlobalApplication.listScheduleLesson.get(2).get(i).lesson_6);
+                                String string = new String(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_5 + "/" +GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_6);
                                 lesson3Button.setText(string);
                             }
+
+                            cabinet3Button.setText(GlobalApplication.listScheduleClassrooms.get(groupId).get(i).classroom_5);
+
                         }break;
                         case 3:{
-                            if(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_7.equals("-")){
+                            if(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_7.equals("-")){
                                 TableRow tableRow4 = (TableRow)myLayout.findViewById(R.id.TableRow4);
                                 tableRow4.setVisibility(View.GONE);
 
-                            }else if (GlobalApplication.listScheduleLesson.get(2).get(i).lesson_7.equals(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_8)){
-                                lesson4Button.setText(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_7);
+                            }else if (GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_7.equals(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_8)){
+                                lesson4Button.setText(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_7);
                             }else{
-                                String string = new String(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_7 + "/" +GlobalApplication.listScheduleLesson.get(2).get(i).lesson_8);
+                                String string = new String(GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_7 + "/" +GlobalApplication.listScheduleLesson.get(groupId).get(i).lesson_8);
                                 lesson4Button.setText(string);
                             }
+
+                            cabinet4Button.setText(GlobalApplication.listScheduleClassrooms.get(groupId).get(i).classroom_7);
+
                         }break;
                         default:{
                             Log.d("idu","idu");
                         }
 
+                    }
+
+
+                    // Если нет ни одного урока, удалить таблицу
+                    TableLayout dayTable =(TableLayout)myLayout.findViewById(R.id.dayTable);
+                    if (dayTable.getChildCount() < 3){
+                        dayTable.removeAllViews();
                     }
 
 

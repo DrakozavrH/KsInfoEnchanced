@@ -59,8 +59,8 @@
                 android:layout_weight="2"
                 android:text="@string/ScheduleCardSubjectDefault"
                 android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:padding="10dp"
+                android:maxLines="2"
+                android:padding="5dp"
                 style="@style/ScheduleTableCell"/>
 
             <Button
@@ -90,8 +90,8 @@
                 android:layout_weight="2"
                 android:text="@string/ScheduleCardSubjectDefault"
                 android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:padding="10dp"
+                android:maxLines="2"
+                android:padding="5dp"
                 style="@style/ScheduleTableCell"/>
 
             <Button
@@ -122,8 +122,8 @@
                 android:layout_weight="2"
                 android:text="@string/ScheduleCardSubjectDefault"
                 android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:padding="10dp"
+                android:maxLines="2"
+                android:padding="5dp"
                 style="@style/ScheduleTableCell"/>
 
             <Button
@@ -153,8 +153,8 @@
                 android:layout_weight="2"
                 android:text="@string/ScheduleCardSubjectDefault"
                 android:autoSizeTextType="uniform"
-                android:maxLines="1"
-                android:padding="10dp"
+                android:maxLines="2"
+                android:padding="5dp"
                 style="@style/ScheduleTableCell"/>
 
             <Button
