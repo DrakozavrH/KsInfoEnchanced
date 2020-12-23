@@ -12,6 +12,7 @@
             style="@style/ScheduleTableHeaderRow">
 
             <TextView
+                android:id="@+id/ScheduleTableHeaderTexView"
                 android:text="@string/ScheduleCardHeaderDefault"
                 style="@style/ScheduleTableHeaderText"/>
 
