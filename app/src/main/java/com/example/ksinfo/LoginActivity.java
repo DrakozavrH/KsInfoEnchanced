@@ -231,6 +231,7 @@ public class LoginActivity extends AppCompatActivity {
             };
             commandsRef.addListenerForSingleValueEvent(eventListener);
         }
+       // GlobalApplication.listScheduleLesson = schedule.listScheduleLesson;
     }
     //Прогрузка кабинетов
     public void ClassroomsMet(){
@@ -255,6 +256,7 @@ public class LoginActivity extends AppCompatActivity {
             };
             commandsRef.addListenerForSingleValueEvent(eventListener);
         }
+        //GlobalApplication.listScheduleClassrooms = schedule.listScheduleClassrooms;
     }
 
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Schedule {
-    public List<List<Lesson>> listScheduleLesson = new ArrayList<>();
-    public List<List<Classrooms>> listScheduleClassrooms = new ArrayList<>();
+    //хранение расписания(название урока)
+    public static List<List<Lesson>> listScheduleLesson = new ArrayList<>();
+    //хранение расписания(класс)
+    public static List<List<Classrooms>> listScheduleClassrooms = new ArrayList<>();
 }
