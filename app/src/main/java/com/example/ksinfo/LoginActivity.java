@@ -16,7 +16,6 @@ import com.example.ksinfo.Model.Classrooms;
 import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.Lesson;
 import com.example.ksinfo.Model.News;
-import com.example.ksinfo.Model.Schedule;
 import com.example.ksinfo.Model.User;
 import com.example.ksinfo.Model.UserStatic;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -45,9 +44,8 @@ public class LoginActivity extends AppCompatActivity {
     private List<AdditionalEducation> listAdd;
     private List<Events> listEvents;
     private List<News> listNews;
-    private List<Lesson> listLesson;
-    private List<Classrooms> listClassrooms;
-    final Schedule schedule = new Schedule();
+    public List<List<Lesson>> listScheduleLesson;
+    public List<List<Classrooms>> listScheduleClassrooms;
 
 
     @Override
@@ -67,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
         listAdd = new ArrayList<>();
         listEvents = new ArrayList<>();
         listNews = new ArrayList<>();
-        listLesson = new ArrayList<>();
-        listClassrooms = new ArrayList<>();
+        listScheduleLesson = new ArrayList<>();
+        listScheduleClassrooms = new ArrayList<>();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,14 +214,12 @@ public class LoginActivity extends AppCompatActivity {
             ValueEventListener eventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    listLesson.clear();
+                    List<Lesson> listLesson = new ArrayList<>();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         Lesson lesson = ds.getValue(Lesson.class);
-                        assert lesson != null;
                         listLesson.add(lesson);
                     }
-                    schedule.listScheduleLesson.add(listLesson);
+                    listScheduleLesson.add(listLesson);
                 }
 
                 @Override
@@ -232,7 +228,7 @@ public class LoginActivity extends AppCompatActivity {
             };
             commandsRef.addListenerForSingleValueEvent(eventListener);
         }
-       // GlobalApplication.listScheduleLesson = schedule.listScheduleLesson;
+        GlobalApplication.listScheduleLesson = listScheduleLesson;
     }
     //Прогрузка кабинетов
     public void ClassroomsMet(){
@@ -243,13 +239,13 @@ public class LoginActivity extends AppCompatActivity {
             ValueEventListener eventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    listClassrooms.clear();
+                    List<Classrooms> listClassrooms = new ArrayList<>();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         Classrooms classrooms = ds.getValue(Classrooms.class);
                         assert classrooms != null;
                         listClassrooms.add(classrooms);
                     }
-                    schedule.listScheduleClassrooms.add(listClassrooms);
+                    listScheduleClassrooms.add(listClassrooms);
                 }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
@@ -257,7 +253,7 @@ public class LoginActivity extends AppCompatActivity {
             };
             commandsRef.addListenerForSingleValueEvent(eventListener);
         }
-        //GlobalApplication.listScheduleClassrooms = schedule.listScheduleClassrooms;
+        GlobalApplication.listScheduleClassrooms = listScheduleClassrooms;
     }
 
 }

@@ -32,7 +32,10 @@ public  class GlobalApplication extends Application {
     public static List<Events> listEvents = new ArrayList<>();
     //хранение Новостей
     public static List<News> listNews = new ArrayList<>();
-
+    //хранение расписания(название урока)
+    public static List<List<Lesson>> listScheduleLesson = new ArrayList<>();
+    //хранение расписания(класс)
+    public static List<List<Classrooms>> listScheduleClassrooms = new ArrayList<>();
 
 
 

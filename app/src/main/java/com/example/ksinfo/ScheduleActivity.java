@@ -30,7 +30,6 @@ import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.Item;
 import com.example.ksinfo.Model.Lesson;
 import com.example.ksinfo.Model.News;
-import com.example.ksinfo.Model.Schedule;
 import com.example.ksinfo.Model.UserStatic;
 
 import org.w3c.dom.Text;
@@ -401,7 +400,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private void inflateSchedule(){
 
 
-        if(Schedule.listScheduleLesson.isEmpty()){
+        if(GlobalApplication.listScheduleLesson.isEmpty()){
             Log.d("Empty list","Lessons is empty");
         }else {
 
@@ -409,17 +408,11 @@ public class ScheduleActivity extends AppCompatActivity {
             LayoutInflater inflater = getLayoutInflater();
 
 
-            List<List<Lesson>> lessonList = Schedule.listScheduleLesson;
-            Collections.sort(lessonList, new Comparator<List<Lesson>>() {
-                @Override
-                public int compare(List<Lesson> o1, List<Lesson> o2) {
-                    return o1.getClass().getName().compareTo(o2.getClass().getName());
-                }
-            });
+            List<List<Lesson>> lessonList = GlobalApplication.listScheduleLesson;
 
 
 
-            for (int i = 0; i < Schedule.listScheduleLesson.get(3).size(); i++) {
+            for (int i = 0; i < GlobalApplication.listScheduleLesson.get(2).size(); i++) {
                 View myLayout = inflater.inflate(R.layout.scedule_day_layout,mainLinearLayout,false);
 
                 Button lesson1Button =(Button)myLayout.findViewById(R.id.CardSubject1);
@@ -433,51 +426,51 @@ public class ScheduleActivity extends AppCompatActivity {
 
                         case 0:{
 
-                            if(Schedule.listScheduleLesson.get(3).get(i).lesson_1.equals("-")){
+                            if(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_1.equals("-")){
                                 TableRow tableRow1 = (TableRow)myLayout.findViewById(R.id.TableRow1);
                                 tableRow1.setVisibility(View.GONE);
 
-                            }else if (Schedule.listScheduleLesson.get(3).get(i).lesson_1.equals(Schedule.listScheduleLesson.get(3).get(i).lesson_2)){
-                                lesson1Button.setText(Schedule.listScheduleLesson.get(3).get(i).lesson_1);
+                            }else if (GlobalApplication.listScheduleLesson.get(2).get(i).lesson_1.equals(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_2)){
+                                lesson1Button.setText(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_1);
                             }else{
-                                String string = new String(Schedule.listScheduleLesson.get(3).get(i).lesson_1 + "/" +Schedule.listScheduleLesson.get(3).get(i).lesson_2);
+                                String string = new String(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_1 + "/" +GlobalApplication.listScheduleLesson.get(2).get(i).lesson_2);
                                 lesson1Button.setText(string);
                             }
 
                         }break;
                         case 1:{
-                            if(Schedule.listScheduleLesson.get(3).get(i).lesson_3.equals("-")){
+                            if(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_3.equals("-")){
                                 TableRow tableRow2 = (TableRow)myLayout.findViewById(R.id.TableRow2);
                                 tableRow2.setVisibility(View.GONE);
 
-                            }else if (Schedule.listScheduleLesson.get(3).get(i).lesson_3.equals(Schedule.listScheduleLesson.get(3).get(i).lesson_4)){
-                                lesson2Button.setText(Schedule.listScheduleLesson.get(3).get(i).lesson_3);
+                            }else if (GlobalApplication.listScheduleLesson.get(2).get(i).lesson_3.equals(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_4)){
+                                lesson2Button.setText(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_3);
                             }else{
-                                String string = new String(Schedule.listScheduleLesson.get(3).get(i).lesson_3 + "/" +Schedule.listScheduleLesson.get(3).get(i).lesson_4);
+                                String string = new String(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_3 + "/" +GlobalApplication.listScheduleLesson.get(2).get(i).lesson_4);
                                 lesson2Button.setText(string);
                             }
                         }break;
                         case 2:{
-                            if(Schedule.listScheduleLesson.get(3).get(i).lesson_5.equals("-")){
+                            if(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_5.equals("-")){
                                 TableRow tableRow3 = (TableRow)myLayout.findViewById(R.id.TableRow3);
                                 tableRow3.setVisibility(View.GONE);
 
-                            }else if (Schedule.listScheduleLesson.get(3).get(i).lesson_5.equals(Schedule.listScheduleLesson.get(3).get(i).lesson_6)){
-                                lesson3Button.setText(Schedule.listScheduleLesson.get(3).get(i).lesson_5);
+                            }else if (GlobalApplication.listScheduleLesson.get(2).get(i).lesson_5.equals(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_6)){
+                                lesson3Button.setText(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_5);
                             }else{
-                                String string = new String(Schedule.listScheduleLesson.get(3).get(i).lesson_5 + "/" +Schedule.listScheduleLesson.get(3).get(i).lesson_6);
+                                String string = new String(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_5 + "/" +GlobalApplication.listScheduleLesson.get(2).get(i).lesson_6);
                                 lesson3Button.setText(string);
                             }
                         }break;
                         case 3:{
-                            if(Schedule.listScheduleLesson.get(3).get(i).lesson_7.equals("-")){
+                            if(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_7.equals("-")){
                                 TableRow tableRow4 = (TableRow)myLayout.findViewById(R.id.TableRow4);
                                 tableRow4.setVisibility(View.GONE);
 
-                            }else if (Schedule.listScheduleLesson.get(3).get(i).lesson_7.equals(Schedule.listScheduleLesson.get(3).get(i).lesson_8)){
-                                lesson4Button.setText(Schedule.listScheduleLesson.get(3).get(i).lesson_7);
+                            }else if (GlobalApplication.listScheduleLesson.get(2).get(i).lesson_7.equals(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_8)){
+                                lesson4Button.setText(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_7);
                             }else{
-                                String string = new String(Schedule.listScheduleLesson.get(3).get(i).lesson_7 + "/" +Schedule.listScheduleLesson.get(3).get(i).lesson_8);
+                                String string = new String(GlobalApplication.listScheduleLesson.get(2).get(i).lesson_7 + "/" +GlobalApplication.listScheduleLesson.get(2).get(i).lesson_8);
                                 lesson4Button.setText(string);
                             }
                         }break;
