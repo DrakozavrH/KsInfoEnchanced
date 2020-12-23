@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dayCard"
+    style="@style/ScheduleCard">
+
+
+    <TableLayout
+        android:id="@+id/dayTable"
+        style="@style/ScheduleTable">
+
+        <TableRow
+            style="@style/ScheduleTableHeaderRow">
+
+            <TextView
+                android:text="@string/ScheduleCardHeaderDefault"
+                style="@style/ScheduleTableHeaderText"/>
+
+
+        </TableRow>
+
+        <TableRow
+            style="@style/ScheduleTableRow">
+
+            <TextView
+                android:layout_weight="0.7"
+                android:text="@string/ScheduleTableFirstColumnHeader"
+                style="@style/ScheduleTableCell"/>
+
+            <TextView
+                android:layout_weight="2"
+                android:text="@string/ScheduleTableSecondColumnHeader"
+                style="@style/ScheduleTableCell"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:text="@string/ScheduleTableThirdColumnHeader"
+                style="@style/ScheduleTableCell"/>
+
+            <TextView
+                android:layout_weight="1.5"
+                android:text="@string/ScheduleTableFourthColumnHeader"
+                style="@style/ScheduleTableCell"/>
+
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TableRow1"
+            style="@style/ScheduleTableRow">
+
+            <Button
+                android:layout_weight="0.7"
+                android:text="@string/num1"
+                style="@style/ScheduleTableCell"/>
+
+            <Button
+                android:id="@+id/CardSubject1"
+                android:layout_weight="2"
+                android:text="@string/ScheduleCardSubjectDefault"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:padding="10dp"
+                style="@style/ScheduleTableCell"/>
+
+            <Button
+                android:id="@+id/CardCabinet1"
+                android:layout_weight="1"
+                android:text="@string/ScheduleCardCabinetDefault"
+                style="@style/ScheduleTableCell"/>
+
+            <TextView
+                android:layout_weight="1.5"
+                android:text="@string/Time1"
+                style="@style/ScheduleTableCellTime"/>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TableRow2"
+            style="@style/ScheduleTableRow">
+
+            <Button
+                android:layout_weight="0.7"
+                android:text="@string/num2"
+                style="@style/ScheduleTableCell"/>
+
+            <Button
+                android:id="@+id/CardSubject2"
+                android:layout_weight="2"
+                android:text="@string/ScheduleCardSubjectDefault"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:padding="10dp"
+                style="@style/ScheduleTableCell"/>
+
+            <Button
+                android:id="@+id/CardCabinet2"
+                android:layout_weight="1"
+                android:text="@string/ScheduleCardCabinetDefault"
+                style="@style/ScheduleTableCell"/>
+
+            <TextView
+                android:layout_weight="1.5"
+                android:text="@string/Time2"
+                style="@style/ScheduleTableCellTime"/>
+
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TableRow3"
+            style="@style/ScheduleTableRow">
+
+            <Button
+                android:layout_weight="0.7"
+                android:text="@string/num3"
+                style="@style/ScheduleTableCell"/>
+
+            <Button
+                android:id="@+id/CardSubject3"
+                android:layout_weight="2"
+                android:text="@string/ScheduleCardSubjectDefault"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:padding="10dp"
+                style="@style/ScheduleTableCell"/>
+
+            <Button
+                android:id="@+id/CardCabinet3"
+                android:layout_weight="1"
+                android:text="@string/ScheduleCardCabinetDefault"
+                style="@style/ScheduleTableCell"/>
+
+            <TextView
+                android:layout_weight="1.5"
+                android:text="@string/Time3"
+                style="@style/ScheduleTableCellTime" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/TableRow4"
+            style="@style/ScheduleTableRow">
+
+            <Button
+                android:layout_weight="0.7"
+                android:text="@string/num4"
+                style="@style/ScheduleTableCell"/>
+
+            <Button
+                android:id="@+id/CardSubject4"
+                android:layout_weight="2"
+                android:text="@string/ScheduleCardSubjectDefault"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:padding="10dp"
+                style="@style/ScheduleTableCell"/>
+
+            <Button
+                android:id="@+id/CardCabinet4"
+                android:layout_weight="1"
+                android:text="@string/ScheduleCardCabinetDefault"
+                style="@style/ScheduleTableCell"/>
+
+            <TextView
+                android:layout_weight="1.5"
+                android:text="@string/Time4"
+                style="@style/ScheduleTableCellTime" />
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</androidx.cardview.widget.CardView>

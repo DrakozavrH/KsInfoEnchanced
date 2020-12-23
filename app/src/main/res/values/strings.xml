@@ -174,11 +174,64 @@
     <string name="NewsLinkDefault">www.google.com</string>
     <string name="NewsDateDefault">01.01.2020</string>
 
-    <!-- News layout  -->
+    <!-- Event layout  -->
     <string name="EventDateNumberDefault">29</string>
     <string name="EventDateMonthDefault">Февраля</string>
     <string name="EventTitleNumberDefault">Видеоэкскурсии по столичным паркам. «Зарядье»: природный парк под стенами Кремля</string>
     <string name="EventDescriptionDefault">Участие студентов КС-54, членов ВПК и ВМК в организуемом "ДДТ на Таганке" и Российским военно-историческим обществом Лектории "Оборона Москвы и коренной перелом в Великой Отечественной Войне", посвящённом Году Славы и Памяти - 75 летию Победы в ВОВ</string>
+
+
+    <!-- Student Council layout  -->
+    <string name="StudentCHeader">Студенческий совет</string>
+    <string name="StudentCDescription">Студенческий Совет КС№54 создан с целью предоставить каждому человеку шанс найти новые возможности для реализации своих интеллектуальных и творческих способностей, развития инициативных и формирования лидерских качеств.
+
+Наша работа направлена на создание благоприятной атмосферы для досуга студентов Колледжа.
+
+Если тебе скучно, и кажется, что жизнь проходит мимо, а тебе хочется это изменить, то мы будем рады видеть тебя в рядах нашей большой и дружной команды!
+
+Студенческий Совет КС№54— это команда людей, уверенных в том, что, создавая новые возможности, мы открываем дверь в будущее. Наша цель — реализация новых идей, поиск оригинальных решений и движение только вперед!</string>
+
+    <string name="StudentCMembersHeader">Состав</string>
+    <string name="StudentCMembersDescription">Если ты заинтересовался, хочешь уточнить детали и задать вопросы, тебе ответят следующие люди:</string>
+    <string name="StudentCMember1Name">Карел Александра Ивановна</string>
+    <string name="StudentCMember1Role">Куратор Студенческого совета</string>
+    <string name="StudentCMember1Phone">+7(999)735-14-02</string>
+    <string name="StudentCMember1Email">Karel@кс54.рф</string>
+
+    <string name="StudentCMember2Name">Селезнёв Никита Анатоль</string>
+    <string name="StudentCMember2Role">и.о. Председатель Студенческого Совета</string>
+    <string name="StudentCMember2Phone"> +7(916)621-14-24</string>
+
+    <string name="StudentCMember3Name">Кривошеев Владислав Станиславович</string>
+    <string name="StudentCMember3Role">Заместитель Председателя Студенческого Совета
+Представитель Студсовета на ОП5</string>
+    <string name="StudentCMember3Phone">+7(916)844-42-91</string>
+
+    <string name="StudentCMember4Name">Буров Никита Алексеевич</string>
+    <string name="StudentCMember4Role">Представитель Студсовета на ОП1</string>
+    <string name="StudentCMember4Phone">+7(969)087-23-02</string>
+
+    <string name="StudentCMember5Name">Ляпцев Александр Михайлович</string>
+    <string name="StudentCMember5Role">Представитель Студсовета на ОП2</string>
+    <string name="StudentCMember5Phone">+7(965)110-96-31</string>
+
+    <string name="StudentCMember6Name">Власова Полина Александровна</string>
+    <string name="StudentCMember6Role">Представитель Студсовета на ОП6</string>
+    <string name="StudentCMember6Phone">+7(977)257-88-38</string>
+
+    <string name="StudentCMember7Name">Мороз Григорий Александрович</string>
+    <string name="StudentCMember7Role">Представитель Студсовета на ОП7</string>
+    <string name="StudentCMember7Phone">+7(903)226-97-98</string>
+
+    <string name="StudentCMember8Name">Свирин Игнат Андреевич</string>
+    <string name="StudentCMember8Role">Представитель Студсовета на ОП8</string>
+    <string name="StudentCMember8Phone">+7(909)926-33-93</string>
+
+
+    <!-- Schedule card layout  -->
+    <string name="ScheduleCardHeaderDefault">День недели</string>
+    <string name="ScheduleCardSubjectDefault">Предмет</string>
+    <string name="ScheduleCardCabinetDefault">666</string>
 
     <string name="Cabinet">Кабинет</string>
     <string name="Teacher">Преподаватель</string>
