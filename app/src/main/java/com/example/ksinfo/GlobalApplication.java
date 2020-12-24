@@ -8,6 +8,7 @@ import com.example.ksinfo.Model.AdditionalEducation;
 import com.example.ksinfo.Model.Classrooms;
 import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.Lesson;
+import com.example.ksinfo.Model.Message;
 import com.example.ksinfo.Model.News;
 
 import java.util.ArrayList;
@@ -36,6 +37,8 @@ public  class GlobalApplication extends Application {
     public static List<List<Lesson>> listScheduleLesson = new ArrayList<>();
     //хранение расписания(класс)
     public static List<List<Classrooms>> listScheduleClassrooms = new ArrayList<>();
+
+    public static List<Message> listMes = new ArrayList<>();
 
 
 

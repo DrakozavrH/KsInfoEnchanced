@@ -7,12 +7,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ksinfo.Model.Message;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 public class SendMessageActivity extends AppCompatActivity {
+    TextView headView;
+    TextView textView;
 
     //Переменные для правого меню
     AlertDialog menuDialog;
@@ -24,6 +37,9 @@ public class SendMessageActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_message);
+
+        headView = findViewById(R.id.PhoneNumberEditText);
+        textView = findViewById(R.id.MessageTextEditText);
 
         //Правое меню
         ImageButton imageButton = findViewById(R.id.menuHeaderButton);
@@ -48,7 +64,8 @@ public class SendMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO проверки и отправка сообщения в бд
-
+                saveMessage();
+                
 
                 finish();
             }
@@ -131,5 +148,19 @@ public class SendMessageActivity extends AppCompatActivity {
 
     }
 
+    private void saveMessage(){
+        int number = GlobalApplication.listMes.size();
+        int numberid = GlobalApplication.listMes.get(number-1).id;
+        String[] mes = new String[]{"Mes1","Mes2","Mes3","Mes4","Mes5","Mes6","Mes7","Mes8","Mes9","Mes10"};
+        String head = headView.getText().toString();
+        String text = textView.getText().toString();
+        String timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("Message");
+        Map<String, Message> messageMap = new HashMap<>();
+        String mesName = "Mes" + String.valueOf(numberid);
+        messageMap.put(mesName, new Message(numberid + 1,head, text, timeStamp, MessageFor));
+        ref.setValue(messageMap);
+    }
 }
 

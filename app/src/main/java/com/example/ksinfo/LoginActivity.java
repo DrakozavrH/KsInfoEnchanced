@@ -16,6 +16,7 @@ import com.example.ksinfo.Model.AdditionalEducation;
 import com.example.ksinfo.Model.Classrooms;
 import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.Lesson;
+import com.example.ksinfo.Model.Message;
 import com.example.ksinfo.Model.News;
 import com.example.ksinfo.Model.User;
 import com.example.ksinfo.Model.UserStatic;
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     private List<News> listNews;
     public List<List<Lesson>> listScheduleLesson;
     public List<List<Classrooms>> listScheduleClassrooms;
+    private List<Message> listMessage;
 
 
     @Override
@@ -68,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         listNews = new ArrayList<>();
         listScheduleLesson = new ArrayList<>();
         listScheduleClassrooms = new ArrayList<>();
+        listMessage = new ArrayList<>();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +124,8 @@ public class LoginActivity extends AppCompatActivity {
                     GlobalApplication.listNews = listNews;
                     LessonMet();
                     ClassroomsMet();
+                    MessageMet();
+                    GlobalApplication.listMes = listMessage;
 
 
                     Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
@@ -275,6 +280,24 @@ public class LoginActivity extends AppCompatActivity {
             commandsRef.addListenerForSingleValueEvent(eventListener);
         }
         GlobalApplication.listScheduleClassrooms = listScheduleClassrooms;
+    }
+    //Прогрузка сообщений
+    public void MessageMet(){
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference commandsRef = rootRef.child("Message");
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Message message = ds.getValue(Message.class);
+                    assert message != null;
+                    listMessage.add(message);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        commandsRef.addListenerForSingleValueEvent(eventListener);
     }
 
 }

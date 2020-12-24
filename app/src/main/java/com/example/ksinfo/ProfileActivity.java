@@ -498,11 +498,7 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             });
 
-
-
             newsOrEventsList.removeAllViews();
-
-
 
             for (int i = 0; i < eventList.size(); i++) {
                 View myLayout = inflater.inflate(R.layout.event_layout,newsOrEventsList,false);
@@ -526,7 +522,6 @@ public class ProfileActivity extends AppCompatActivity {
                 String[] dateArray = eventList.get(i).date.split(" ");
                 eventDateMonth.setText(dateArray[1].toString());
                 eventDateNumber.setText(dateArray[0].toString());
-
 
 
                 newsOrEventsList.addView(myLayout);
