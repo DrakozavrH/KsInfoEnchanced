@@ -5,6 +5,7 @@ import android.app.Application;
 import com.example.ksinfo.Model.AdditionalEducation;
 
 import com.example.ksinfo.Model.AdditionalEducation;
+import com.example.ksinfo.Model.Changes;
 import com.example.ksinfo.Model.Classrooms;
 import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.Lesson;
@@ -37,12 +38,9 @@ public  class GlobalApplication extends Application {
     public static List<List<Lesson>> listScheduleLesson = new ArrayList<>();
     //хранение расписания(класс)
     public static List<List<Classrooms>> listScheduleClassrooms = new ArrayList<>();
-
+    //хранение сообщений
     public static List<Message> listMes = new ArrayList<>();
-
-
-
-
-
+    //хранение изменений
+    public static List<Changes> listChanges = new ArrayList<>();
 
 }

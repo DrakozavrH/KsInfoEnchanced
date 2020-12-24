@@ -1,6 +1,11 @@
 package com.example.ksinfo;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -11,8 +16,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.example.ksinfo.Model.AdditionalEducation;
+import com.example.ksinfo.Model.Changes;
 import com.example.ksinfo.Model.Classrooms;
 import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.Lesson;
@@ -49,7 +57,11 @@ public class LoginActivity extends AppCompatActivity {
     public List<List<Lesson>> listScheduleLesson;
     public List<List<Classrooms>> listScheduleClassrooms;
     private static List<Message> listMessage;
+    private List<Changes> listChanges;
 
+    private NotificationManager notificationManager;
+    private static final int NOTIFY_ID = 1;
+    private static String CHANNEL_ID = "CHANNEL_ID";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,6 +83,9 @@ public class LoginActivity extends AppCompatActivity {
         listScheduleLesson = new ArrayList<>();
         listScheduleClassrooms = new ArrayList<>();
         listMessage = new ArrayList<>();
+        listChanges = new ArrayList<>();
+
+        notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +105,8 @@ public class LoginActivity extends AppCompatActivity {
                 LessonMet();
                 ClassroomsMet();
 
+
+
                 final Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                 UserStatic.role = 2;
 
@@ -99,11 +116,8 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 };
-
                 Handler h = new Handler();
                 h.postDelayed(r, 4000);
-
-
             }
         });
     }
@@ -113,8 +127,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-
                     Toast.makeText(LoginActivity.this, "Aвторизация успешна", Toast.LENGTH_SHORT).show();
+
                     UserMet();
                     AdditionalEducationMet();
                     GlobalApplication.listAdd = listAdd;
@@ -126,13 +140,13 @@ public class LoginActivity extends AppCompatActivity {
                     ClassroomsMet();
                     MessageMet();
                     GlobalApplication.listMes = listMessage;
+                    ChangesMet();
+                    GlobalApplication.listChanges = listChanges;
 
 
                     Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                     String name = UserStatic.Name;
                     intent.putExtra("name", name);
-
-
                     startActivity(intent);
                 } else
                     Toast.makeText(LoginActivity.this, "Aвторизация провалена", Toast.LENGTH_SHORT).show();
@@ -299,5 +313,50 @@ public class LoginActivity extends AppCompatActivity {
         };
         commandsRef.addListenerForSingleValueEvent(eventListener);
     }
+    //Прогрузка замен
+    public void ChangesMet(){
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference commandsRef = rootRef.child("changes");
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Changes changes = ds.getValue(Changes.class);
+                    assert changes != null;
+                    listChanges.add(changes);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        commandsRef.addListenerForSingleValueEvent(eventListener);
+    }
+
+    public void notifications(){
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivities(getApplicationContext(), 0, new Intent[]{intent}, PendingIntent.FLAG_UPDATE_CURRENT);
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+                        .setAutoCancel(false)
+                        .setSmallIcon(R.drawable.ks54logo2)
+                        .setWhen(System.currentTimeMillis())
+                        .setContentIntent(pendingIntent)
+                        .setContentTitle("Напоминание")
+                        .setContentText("Пора покормить кота")
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .setAutoCancel(true);
+        createChannelIfNeeded(notificationManager);
+        notificationManager.notify(NOTIFY_ID, builder.build());
+
+    }
+
+    private static void createChannelIfNeeded(NotificationManager manager) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
+            manager.createNotificationChannel(notificationChannel);
+        }
+    }
+
 
 }
