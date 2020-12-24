@@ -191,8 +191,6 @@ public class ProfileActivity extends AppCompatActivity {
         if(UserStatic.role == 0){
 
 
-            //TODO получение группы пользователя из бд
-
             final TextView profileDescriptionButton = findViewById(R.id.ProfileDescriptionTextButton);
             if (profileDescriptionButton.getText().equals("Зарегистрироваться")){
 
@@ -572,8 +570,6 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
     }
-
-
 
 
 }

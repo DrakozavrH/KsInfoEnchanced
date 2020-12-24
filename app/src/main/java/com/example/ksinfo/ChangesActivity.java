@@ -4,9 +4,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -16,11 +19,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ksinfo.Adapters.MyAdapter;
+import com.example.ksinfo.Model.Changes;
 import com.example.ksinfo.Model.Item;
+import com.example.ksinfo.Model.Message;
 import com.example.ksinfo.Model.User;
 import com.example.ksinfo.Model.UserStatic;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ChangesActivity extends AppCompatActivity {
@@ -71,6 +78,9 @@ public class ChangesActivity extends AppCompatActivity {
                 rightMenuDialog();
             }
         });
+
+
+        inflateChanges();
 
 
     }
@@ -292,6 +302,57 @@ public class ChangesActivity extends AppCompatActivity {
 
         MyAdapter adapter = new MyAdapter(items);
         list.setAdapter(adapter);
+
+
+    }
+
+    private void inflateChanges(){
+
+        TextView zeroChanges = findViewById(R.id.ZeroChangesTextView);
+        if(!GlobalApplication.listChanges.isEmpty()){
+            zeroChanges.setVisibility(View.GONE);
+        }
+
+
+        LinearLayout changesLayout = findViewById(R.id.ChangesLinearLayout);
+        LayoutInflater inflater = getLayoutInflater();
+
+        changesLayout.removeAllViews();
+
+        List<Changes> changeList = GlobalApplication.listChanges;
+        Collections.sort(changeList, new Comparator<Changes>() {
+            @Override
+            public int compare(Changes object1, Changes object2) {
+                return Integer.valueOf(object1.couple).compareTo(Integer.valueOf(object2.couple));
+            }
+        });
+
+
+        for (int i = 0; i < changeList.size(); i++) {
+            View myLayout = inflater.inflate(R.layout.change_layout,changesLayout,false);
+
+            // Заголовок
+            TextView changeHeader = (TextView)myLayout.findViewById(R.id.ChangeTitleTextView);
+            String header = "Замена пары №" + changeList.get(i).couple;
+            changeHeader.setText(header);
+
+            // Отмененная пара
+            TextView firstSubject = (TextView)myLayout.findViewById(R.id.ChangeFirstSubject);
+            firstSubject.setText(changeList.get(i).canceled);
+
+            // Замена
+            TextView secondSubject = (TextView)myLayout.findViewById(R.id.ChangeSecondSubject);
+            secondSubject.setText(changeList.get(i).replacement);
+
+
+
+
+            if(changeList.get(i).group.equals(UserStatic.group)){
+                changesLayout.addView(myLayout);
+            }
+
+
+        }
 
 
     }
