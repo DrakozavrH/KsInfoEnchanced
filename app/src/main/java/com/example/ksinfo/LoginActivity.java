@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     private List<News> listNews;
     public List<List<Lesson>> listScheduleLesson;
     public List<List<Classrooms>> listScheduleClassrooms;
-    private List<Message> listMessage;
+    private static List<Message> listMessage;
 
 
     @Override
@@ -282,7 +282,7 @@ public class LoginActivity extends AppCompatActivity {
         GlobalApplication.listScheduleClassrooms = listScheduleClassrooms;
     }
     //Прогрузка сообщений
-    public void MessageMet(){
+    public static void MessageMet(){
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference commandsRef = rootRef.child("Message");
         ValueEventListener eventListener = new ValueEventListener() {

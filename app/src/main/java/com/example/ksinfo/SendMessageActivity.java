@@ -152,15 +152,19 @@ public class SendMessageActivity extends AppCompatActivity {
         int number = GlobalApplication.listMes.size();
         int numberid = GlobalApplication.listMes.get(number-1).id;
         String[] mes = new String[]{"Mes1","Mes2","Mes3","Mes4","Mes5","Mes6","Mes7","Mes8","Mes9","Mes10"};
+
         String head = headView.getText().toString();
         String text = textView.getText().toString();
         String timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
+
+
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("Message");
         Map<String, Message> messageMap = new HashMap<>();
         String mesName = "Mes" + String.valueOf(numberid);
-        messageMap.put(mesName, new Message(numberid + 1,head, text, timeStamp, MessageFor));
-        ref.setValue(messageMap);
+        ref.child(mesName).setValue(new Message(numberid + 1,head, text, timeStamp, MessageFor));
+
+        LoginActivity.MessageMet();
     }
 }
 
