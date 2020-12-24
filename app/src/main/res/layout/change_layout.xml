@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:id="@+id/ChangePanelBackground"
+    android:background="@color/KsLightBlue"
+    android:paddingBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    >
+
+
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <FrameLayout
+            android:paddingTop="10dp"
+            android:background="@color/KsBlue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/ChangeTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/KsWhite"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:text="@string/ChangesHeaderTextDefault"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/borderbottom"
+                android:paddingLeft="10dp"
+                android:paddingBottom="10dp" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/ChangeFirstSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/KsWhite"
+            android:textSize="24sp"
+            android:text="@string/ChangesSubject1Default"
+            android:linksClickable="true"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/borderbottom"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/KsWhite"
+            android:textSize="24sp"
+            android:text="@string/ChangesNa"
+            android:linksClickable="true"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/borderbottom"
+            android:paddingBottom="5dp"
+            />
+
+
+        <TextView
+            android:id="@+id/ChangeSecondSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/KsWhite"
+            android:textSize="24sp"
+            android:text="@string/ChangesSubject2Default"
+            android:linksClickable="true"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
