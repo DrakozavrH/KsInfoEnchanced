@@ -333,7 +333,7 @@ public class MessagesActivity extends AppCompatActivity {
         Collections.sort(messageList, new Comparator<Message>() {
             @Override
             public int compare(Message object1, Message object2) {
-                return Integer.valueOf(object1.id).compareTo(Integer.valueOf(object2.id));
+                return Integer.valueOf(object2.id).compareTo(Integer.valueOf(object1.id));
             }
         });
 
@@ -390,8 +390,7 @@ public class MessagesActivity extends AppCompatActivity {
         };
 
         Handler h = new Handler();
-        h.postDelayed(r, 1000);
-
+        h.postDelayed(r, 4000);
 
     }
 

@@ -235,18 +235,26 @@ public class ProfileActivity extends AppCompatActivity {
 
 
             if(intent != null){
-                Username = intent.getStringExtra("name");
-            }
+                Runnable r = new Runnable() {
+                    @Override
+                    public void run(){
+                        Username = UserStatic.Name;
+                        UsernameText.setText(Username);
+                    }
+                };
+                Handler h = new Handler();
+                h.postDelayed(r, 2000);
 
-            UsernameText.setText(Username);
+
+            }
 
         }else if(UserStatic.role == 2){
 
-            ProfileDescriptionText.setText("");
+            ProfileDescriptionText.setText("Гость");
             ProfileDescriptionTextButton.setText("Зарегистрироваться");
 
         }else if(UserStatic.role == 1){
-            UsernameText.setText("AdminName");
+            UsernameText.setText("Admin");
             ProfileDescriptionText.setText("Администратор");
             ProfileDescriptionTextButton.setText("");
         }
@@ -570,6 +578,5 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
     }
-
 
 }

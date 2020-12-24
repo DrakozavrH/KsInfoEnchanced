@@ -3,6 +3,7 @@ package com.example.ksinfo;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -354,7 +355,8 @@ public class ChangesActivity extends AppCompatActivity {
 
         }
 
-
     }
+
+
 
 }

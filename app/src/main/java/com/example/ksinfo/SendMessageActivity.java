@@ -19,8 +19,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SendMessageActivity extends AppCompatActivity {
@@ -148,6 +151,12 @@ public class SendMessageActivity extends AppCompatActivity {
     }
 
     private void saveMessage(){
+        Collections.sort(GlobalApplication.listMes, new Comparator<Message>() {
+            @Override
+            public int compare(Message object1, Message object2) {
+                return Integer.valueOf(object1.id).compareTo(Integer.valueOf(object2.id));
+            }
+        });
         int number = GlobalApplication.listMes.size();
         int numberid = GlobalApplication.listMes.get(number-1).id;
 

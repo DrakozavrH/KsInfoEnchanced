@@ -44,6 +44,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
@@ -53,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView PasswordText;
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDataBase;
-    private DatabaseReference dataBase;
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     private List<AdditionalEducation> listAdd;
     private List<Events> listEvents;
@@ -66,6 +68,8 @@ public class LoginActivity extends AppCompatActivity {
     private NotificationManager notificationManager;
     private static final int NOTIFY_ID = 1;
     private static String CHANNEL_ID = "CHANNEL_ID";
+    private static String Notif;
+    private static int num = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,10 +81,6 @@ public class LoginActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.LoginButton);
         Button guestButton = findViewById(R.id.NoRegistrationButton);
 
-        mAuth = FirebaseAuth.getInstance();
-        mDataBase = FirebaseDatabase.getInstance();
-        dataBase = FirebaseDatabase.getInstance().getReference("additional_education");
-
         listAdd = new ArrayList<>();
         listEvents = new ArrayList<>();
         listNews = new ArrayList<>();
@@ -90,6 +90,10 @@ public class LoginActivity extends AppCompatActivity {
         listChanges = new ArrayList<>();
 
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        mAuth = FirebaseAuth.getInstance();
+        mDataBase = FirebaseDatabase.getInstance();
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,8 +112,6 @@ public class LoginActivity extends AppCompatActivity {
                 GlobalApplication.listNews = listNews;
                 LessonMet();
                 ClassroomsMet();
-
-
 
                 final Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                 UserStatic.role = 2;
@@ -146,17 +148,13 @@ public class LoginActivity extends AppCompatActivity {
 
                     UserMet();
                     AdditionalEducationMet();
-                    GlobalApplication.listAdd = listAdd;
                     EventMet();
-                    GlobalApplication.listEvents = listEvents;
                     NewMet();
-                    GlobalApplication.listNews = listNews;
                     LessonMet();
                     ClassroomsMet();
                     MessageMet();
-                    GlobalApplication.listMes = listMessage;
                     ChangesMet();
-                    GlobalApplication.listChanges = listChanges;
+                    notificationsMet();
 
 
                     Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
@@ -223,6 +221,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         };
         commandsRef.addListenerForSingleValueEvent(eventListener);
+        GlobalApplication.listAdd = listAdd;
     }
     //Прогрузка мероприятий
     public void EventMet(){
@@ -231,6 +230,8 @@ public class LoginActivity extends AppCompatActivity {
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                GlobalApplication.listEvents.clear();
+                listEvents.clear();
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     Events events = ds.getValue(Events.class);
                     assert events != null;
@@ -241,6 +242,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         };
         commandsRef.addListenerForSingleValueEvent(eventListener);
+        GlobalApplication.listEvents = listEvents;
     }
     //Прогрузка новостей
     public void NewMet(){
@@ -249,6 +251,8 @@ public class LoginActivity extends AppCompatActivity {
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                GlobalApplication.listNews.clear();
+                listNews.clear();
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     News news = ds.getValue(News.class);
                     assert news != null;
@@ -259,6 +263,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         };
         commandsRef.addListenerForSingleValueEvent(eventListener);
+        GlobalApplication.listNews = listNews;
     }
     //Прогрузка уроков
     public void LessonMet(){
@@ -317,6 +322,8 @@ public class LoginActivity extends AppCompatActivity {
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                GlobalApplication.listMes.clear();
+                listMessage.clear();
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     Message message = ds.getValue(Message.class);
                     assert message != null;
@@ -327,6 +334,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         };
         commandsRef.addListenerForSingleValueEvent(eventListener);
+        GlobalApplication.listMes = listMessage;
     }
     //Прогрузка замен
     public void ChangesMet(){
@@ -335,6 +343,8 @@ public class LoginActivity extends AppCompatActivity {
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                GlobalApplication.listChanges.clear();
+                listChanges.clear();
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
                     Changes changes = ds.getValue(Changes.class);
                     assert changes != null;
@@ -345,10 +355,154 @@ public class LoginActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {}
         };
         commandsRef.addListenerForSingleValueEvent(eventListener);
+        GlobalApplication.listChanges = listChanges;
     }
 
+    public void notificationsMet(){
+
+            DatabaseReference refChange = database.getReference("changes");
+            refChange.orderByChild("group").equalTo(UserStatic.group).addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Notif = "Изменения в расписании";
+                    notifications();
+                    ChangesMet();
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    ChangesMet();
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                    ChangesMet();
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
+            DatabaseReference refMessage = database.getReference("Message");
+            refMessage.orderByChild("groupBD").equalTo(UserStatic.group).addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Notif = "Новое сообщение";
+                    notifications();
+                    MessageMet();
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    MessageMet();
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                    MessageMet();
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
+            DatabaseReference refMessageAll = database.getReference("Message");
+            refMessageAll.orderByChild("groupBD").equalTo("All").addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Notif = "Новое сообщение";
+                    notifications();
+                    MessageMet();
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    MessageMet();
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                    MessageMet();
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
+            DatabaseReference refNews = database.getReference("News");
+            refNews.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Notif = "Новоя новость";
+                    notifications();
+                    NewMet();
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    NewMet();
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                    NewMet();
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
+            DatabaseReference refEvents = database.getReference("Events");
+            refEvents.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    Notif = "Новое мероприятие";
+                    notifications();
+                    EventMet();
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                    EventMet();
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                    EventMet();
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
+    }
     public void notifications(){
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivities(getApplicationContext(), 0, new Intent[]{intent}, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder =
@@ -357,15 +511,13 @@ public class LoginActivity extends AppCompatActivity {
                         .setSmallIcon(R.drawable.ks54logo2)
                         .setWhen(System.currentTimeMillis())
                         .setContentIntent(pendingIntent)
-                        .setContentTitle("Напоминание")
-                        .setContentText("Пора покормить кота")
+                        .setContentTitle(Notif)
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
                         .setAutoCancel(true);
         createChannelIfNeeded(notificationManager);
         notificationManager.notify(NOTIFY_ID, builder.build());
 
     }
-
     private static void createChannelIfNeeded(NotificationManager manager) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
