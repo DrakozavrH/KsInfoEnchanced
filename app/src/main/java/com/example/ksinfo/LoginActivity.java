@@ -3,6 +3,9 @@ package com.example.ksinfo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -31,6 +34,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,6 +110,17 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+        TextView forgotPassword = findViewById(R.id.forgotPassword);
+        String link = "https://www.ks54.ru/lk/forgot-password";
+        String text = "Забыли пароль?";
+        String title = MessageFormat.format("<a href={0}> {1} </a>",link,text);
+        forgotPassword.setText(Html.fromHtml(title));
+        forgotPassword.setLinkTextColor(getResources().getColor(R.color.KsOrange));
+        forgotPassword.setClickable(true);
+        forgotPassword.setMovementMethod(LinkMovementMethod.getInstance());
+
+
     }
 
     public void signIn(final String email, String password) {

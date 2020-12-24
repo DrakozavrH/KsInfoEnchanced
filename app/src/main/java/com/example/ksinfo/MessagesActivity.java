@@ -3,9 +3,11 @@ package com.example.ksinfo;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,9 +23,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ksinfo.Adapters.MyAdapter;
 import com.example.ksinfo.Model.Item;
+import com.example.ksinfo.Model.Message;
 import com.example.ksinfo.Model.UserStatic;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MessagesActivity extends AppCompatActivity {
@@ -74,32 +81,11 @@ public class MessagesActivity extends AppCompatActivity {
         });
 
 
-        //Заполнение истории сообщений
-        //TODO брать сообщения из бд
         LinearLayout historyLayout = findViewById(R.id.MessageHistoryLayout);
-        LayoutInflater inflater = getLayoutInflater();
+        historyLayout.removeAllViews();
 
-        for (int i = 0; i < 10; i++) {
-            View myLayout = inflater.inflate(R.layout.message_layout,historyLayout,false);
-
-            myLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MessagesActivity.this,MessageDescriptionActivity.class);
-
-                    startActivity(intent);
-
-                }
-            });
-
-            if(i==0 || i ==3){
-                TextView textView =(TextView)myLayout.findViewById(R.id.MessageHeader);
-                textView.setTextColor(getResources().getColor(R.color.KsOrange));
-            }
-
-            historyLayout.addView(myLayout);
-        }
-
+        //Заполнение истории сообщений
+        inflateMessages();
 
         Button sendMessageButton = findViewById(R.id.SendMessageButton);
         sendMessageButton.setOnClickListener(new View.OnClickListener() {
@@ -334,5 +320,87 @@ public class MessagesActivity extends AppCompatActivity {
 
 
     }
+
+    private void inflateMessages(){
+
+
+        LinearLayout historyLayout = findViewById(R.id.MessageHistoryLayout);
+        LayoutInflater inflater = getLayoutInflater();
+
+        historyLayout.removeAllViews();
+
+        List<Message> messageList = GlobalApplication.listMes;
+        Collections.sort(messageList, new Comparator<Message>() {
+            @Override
+            public int compare(Message object1, Message object2) {
+                return Integer.valueOf(object1.id).compareTo(Integer.valueOf(object2.id));
+            }
+        });
+
+        for (int i = 0; i < messageList.size(); i++) {
+            View myLayout = inflater.inflate(R.layout.message_layout,historyLayout,false);
+
+            // Заголовок
+            TextView messageHeader = (TextView)myLayout.findViewById(R.id.MessageHeader);
+            messageHeader.setText(messageList.get(i).head);
+
+            // Время
+            TextView messageTime = (TextView)myLayout.findViewById(R.id.MessageTime);
+            messageTime.setText(messageList.get(i).time);
+
+            //Текст
+            TextView messageText = (TextView)myLayout.findViewById(R.id.MessagePreview);
+            messageText.setText(messageList.get(i).text);
+
+
+            final int finalI = i;
+            myLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MessagesActivity.this,MessageDescriptionActivity.class);
+                    intent.putExtra("messageNumber", finalI);
+
+                    startActivity(intent);
+
+                }
+            });
+
+
+            historyLayout.addView(myLayout);
+        }
+
+        getWindow().getDecorView().findViewById(android.R.id.content).invalidate();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Runnable r = new Runnable() {
+            @Override
+            public void run(){
+                LinearLayout historyLayout = findViewById(R.id.MessageHistoryLayout);
+                historyLayout.removeAllViews();
+
+                inflateMessages();
+
+                historyLayout.invalidate();
+            }
+        };
+
+        Handler h = new Handler();
+        h.postDelayed(r, 1000);
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+
+
 
 }

@@ -4,9 +4,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -16,10 +19,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ksinfo.Adapters.MyAdapter;
+import com.example.ksinfo.Model.Events;
 import com.example.ksinfo.Model.Item;
+import com.example.ksinfo.Model.Message;
 import com.example.ksinfo.Model.UserStatic;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class NotificationsActivity extends AppCompatActivity {
@@ -70,6 +77,10 @@ public class NotificationsActivity extends AppCompatActivity {
                 rightMenuDialog();
             }
         });
+
+
+        inflateMessagesN();
+
 
     }
 
@@ -295,5 +306,66 @@ public class NotificationsActivity extends AppCompatActivity {
 
     }
 
+
+    private void inflateMessagesN(){
+
+        TextView zeroNewNotifications = findViewById(R.id.ZeroNotificationsTextView);
+        if(!GlobalApplication.listMes.isEmpty()){
+            zeroNewNotifications.setVisibility(View.GONE);
+        }
+
+
+        LinearLayout notificationsLayout = findViewById(R.id.NotificationLinearLayout);
+        LayoutInflater inflater = getLayoutInflater();
+
+        notificationsLayout.removeAllViews();
+
+        List<Message> messageList = GlobalApplication.listMes;
+        Collections.sort(messageList, new Comparator<Message>() {
+            @Override
+            public int compare(Message object1, Message object2) {
+                return Integer.valueOf(object1.id).compareTo(Integer.valueOf(object2.id));
+            }
+        });
+
+
+        for (int i = 0; i < messageList.size(); i++) {
+            View myLayout = inflater.inflate(R.layout.message_layout,notificationsLayout,false);
+
+            // Заголовок
+            TextView messageHeader = (TextView)myLayout.findViewById(R.id.MessageHeader);
+            messageHeader.setText(messageList.get(i).head);
+
+            // Время
+            TextView messageTime = (TextView)myLayout.findViewById(R.id.MessageTime);
+            messageTime.setText(messageList.get(i).time);
+
+            //Текст
+            TextView messageText = (TextView)myLayout.findViewById(R.id.MessagePreview);
+            messageText.setText(messageList.get(i).text);
+
+
+            final int finalI = i;
+            myLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(NotificationsActivity.this,MessageDescriptionActivity.class);
+                    intent.putExtra("messageNumber", finalI);
+
+                    startActivity(intent);
+
+                }
+            });
+
+
+            if(messageList.get(i).groupBD.equals(UserStatic.group) || messageList.get(i).groupBD.equals("All")){
+                notificationsLayout.addView(myLayout);
+            }
+
+
+        }
+
+
+    }
 
 }

@@ -6,10 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.ksinfo.Model.Message;
+
+import java.util.List;
 
 public class MessageDescriptionActivity extends AppCompatActivity {
 
@@ -40,6 +45,16 @@ public class MessageDescriptionActivity extends AppCompatActivity {
         });
 
 
+        //Заполнение информации
+        Intent intent = getIntent();
+        int messageNumber = intent.getIntExtra("messageNumber",0);
+        List<Message> messageList = GlobalApplication.listMes;
+
+        TextView messageHeader = findViewById(R.id.MessageDescriptionHeader);
+        messageHeader.setText(messageList.get(messageNumber).head);
+
+        TextView messageText = findViewById(R.id.MessageDescriptionText);
+        messageText.setText(messageList.get(messageNumber).text);
 
 
     }

@@ -89,7 +89,6 @@ public class SendMessageActivity extends AppCompatActivity {
                 forAllButton.setBackgroundColor(getResources().getColor(R.color.KsLightBlue));
 
                 chooseGroupDialog();
-                
             }
         });
 
@@ -130,7 +129,7 @@ public class SendMessageActivity extends AppCompatActivity {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        final CharSequence[] options = {"1-АСС11-3", "1-АСС9-5ВБ", "1-ИСП11-14", "1-ИСП11-15", "1-ИСП11-16", "1-ИСП11-17", "1-ИСП9-15ВБ", "1-ИСП9-16ВБ", "1-ИСП9-17ВБ", "1-ОСАТ11-5", "1-ОСАТ9-6", "1-ОСАТ9-7ВБ", "2-АСС11-2", "2-АСС9-2", "2-ИСП11-10", "2-ИСП11-11", "2-ИСП11-12", "2-ИСП11-13", "2-ИСП9-10-ВБ", "2-ИСП9-7", "2-ИСП9-8", "2-ИСП9-9-ВБ", "2-КС11-7", "2-КС9-9", "2-ОСАТ11-3", "2-ОСАТ11-4", "2-ОСАТ9-4", "2-ОСАТ9-5", "3-АСС11-1", "3-АСС9-1", "3-ИСП11-5", "3-ИСП11-6", "3-ИСП11-7", "3-ИСП11-8", "3-ИСП9-3", "3-ИСП9-4", "3-ИСП9-5-ВБ", "3-ИСП9-6-ВБ", "3-КС11-5", "3-КС11-6", "3-КС9-7", "3-КС9-8-ВБ", "3-ОСАТ11-1", "3-ОСАТ11-2", "3-ОСАТ9-2", "3-ОСАТ9-3", "4-ИСП9-1", "4-ИСП9-2-ВБ", "4-ОСАТ9-1", "4-ПКС9-3-ВБ", "4-ПКС9-4-ВБ"};
+        final CharSequence[] options = {"1-ИСП11-14","2-ИСП11-11","3-ИСП9-4","4-ИСП9-1"};
 
         builder.setTitle("Выбор группы").setItems(options, new DialogInterface.OnClickListener() {
             @Override
@@ -164,6 +163,9 @@ public class SendMessageActivity extends AppCompatActivity {
         String mesName = "Mes" + String.valueOf(numberid);
         ref.child(mesName).setValue(new Message(numberid + 1,head, text, timeStamp, MessageFor));
 
+        //////////////////////////
+        GlobalApplication.listMes.clear();
+        //////////////////////////
         LoginActivity.MessageMet();
     }
 }
