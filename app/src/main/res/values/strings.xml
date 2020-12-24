@@ -242,7 +242,11 @@
     <string name="ClubEnterUnavailable">Запись недоступна</string>
 
 
-
+    <!-- Club description layout  -->
+    <string name="ChangesHeaderTextDefault">Замена пары №1</string>
+    <string name="ChangesSubject1Default">МДК.11.01. Технология разработки и защиты баз данных</string>
+    <string name="ChangesSubject2Default">Иностранный язык в профессиональной деятельности</string>
+    <string name="ChangesNa">на</string>
 
 
 
