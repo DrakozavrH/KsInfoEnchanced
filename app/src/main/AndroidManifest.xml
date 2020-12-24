@@ -34,6 +34,7 @@
         <activity android:name=".SettingsActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".SendMessageActivity" android:theme="@style/AppTheme"/>
         <activity android:name=".MessageDescriptionActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".ClubDescriptionActivity" android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

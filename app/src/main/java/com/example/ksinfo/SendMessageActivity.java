@@ -72,9 +72,7 @@ public class SendMessageActivity extends AppCompatActivity {
                 forAllButton.setBackgroundColor(getResources().getColor(R.color.KsLightBlue));
 
                 chooseGroupDialog();
-
-
-                MessageFor = forGroupButton.getText().toString();
+                
             }
         });
 
@@ -123,6 +121,7 @@ public class SendMessageActivity extends AppCompatActivity {
 
                 Button button = findViewById(R.id.ForGroupButton);
                 button.setText(options[which]);
+                MessageFor = options[which].toString();
 
             }
         });

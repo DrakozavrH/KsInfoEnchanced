@@ -160,7 +160,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/KsWhite"
                             android:text="@string/ClubDefaultName"
-                            android:textSize="24sp"
+                            android:textSize="20sp"
                             android:background="@color/KsBlue"
                             android:layout_marginBottom="3dp"
                             android:gravity="center" />
@@ -428,7 +428,7 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
+                <!--<androidx.cardview.widget.CardView
                     android:id="@+id/card_view6"
                     android:layout_gravity="center"
                     android:layout_width="match_parent"
@@ -1002,7 +1002,7 @@
                     </LinearLayout>
 
 
-                </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>-->
 
             </LinearLayout>
 

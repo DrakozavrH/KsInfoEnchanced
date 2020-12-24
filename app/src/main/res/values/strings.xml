@@ -21,6 +21,7 @@
     <string name="TextAskQuestionHeader">Задать вопрос</string>
     <string name="TextStudentCouncilHeader">Студсовет</string>
     <string name="TextPsychologistHeader">Психолог</string>
+    <string name="ClubDescriptionHeader">Описание кружка</string>
 
 
     <string name="LoginHint">Логин</string>
@@ -232,6 +233,13 @@
     <string name="ScheduleCardHeaderDefault">День недели</string>
     <string name="ScheduleCardSubjectDefault">Предмет</string>
     <string name="ScheduleCardCabinetDefault">666</string>
+
+    <!-- Club description layout  -->
+    <string name="ClubPlace">Площадка:</string>
+    <string name="ClubTeacher">Преподаватель:</string>
+    <string name="ClubCondition">Состояние:</string>
+    <string name="ClubDescriptionDefault">Описание кружка</string>
+    <string name="ClubEnterUnavailable">Запись недоступна</string>
 
     <string name="Cabinet">Кабинет</string>
     <string name="Teacher">Преподаватель</string>

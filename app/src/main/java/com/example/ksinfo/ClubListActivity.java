@@ -4,8 +4,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,6 +66,40 @@ public class ClubListActivity extends AppCompatActivity {
                 rightMenuDialog();
             }
         });
+
+
+        Button[] buttons = new Button[GlobalApplication.listAdd.size()];
+        TextView[] names  =new TextView[GlobalApplication.listAdd.size()];
+        TextView[] descriptions = new TextView[GlobalApplication.listAdd.size()];
+
+        for (int i = 0; i < GlobalApplication.listAdd.size(); i++) {
+            String buttonID = "club"+(i+1)+"Button";
+            int resID = getResources().getIdentifier(buttonID,"id",getPackageName());
+            buttons[i] =((Button)findViewById(resID));
+            final int finalI = i;
+            buttons[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ClubListActivity.this,ClubDescriptionActivity.class);
+                    intent.putExtra("clubID", finalI);
+
+                    startActivity(intent);
+                }
+            });
+
+            String nameID = "club"+(i+1)+"Name";
+            int res1ID = getResources().getIdentifier(nameID,"id",getPackageName());
+            names[i] = ((TextView)findViewById(res1ID));
+            names[i].setText(GlobalApplication.listAdd.get(i).title);
+
+            String descriptionID = "club"+(i+1)+"Description";
+            int res2ID = getResources().getIdentifier(descriptionID,"id",getPackageName());
+            descriptions[i] = ((TextView)findViewById(res2ID));
+            descriptions[i].setText(GlobalApplication.listAdd.get(i).text);
+
+        }
+
+
 
     }
 
