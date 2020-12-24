@@ -28,7 +28,7 @@
     <string name="PasswordHint">Пароль</string>
     <string name="LoginButtonText">Вход</string>
     <string name="ForgotPassword">Забыли пароль?</string>
-    <string name="NoRegistration">Продолжить без регистрации</string>
+    <string name="NoRegistration">Продолжить как Гость</string>
 
 
     <string name="ProfileNameGuest">Гость</string>
