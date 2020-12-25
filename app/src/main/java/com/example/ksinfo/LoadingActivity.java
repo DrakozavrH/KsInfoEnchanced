@@ -33,7 +33,6 @@ public class LoadingActivity extends AppCompatActivity {
                 .setDuration(duration)
                 .start();
 
-
         AnimateLogo();
 
     }
@@ -48,7 +47,7 @@ public class LoadingActivity extends AppCompatActivity {
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
-                Intent intent = new Intent(LoadingActivity.this,MainActivity.class);
+                Intent intent = new Intent(LoadingActivity.this,ProfileActivity.class);
                 startActivity(intent);
             }
         }).start();

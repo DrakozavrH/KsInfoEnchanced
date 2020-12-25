@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -75,9 +76,25 @@ public class ProfileActivity extends AppCompatActivity {
         ProfileDescriptionTextButton = findViewById(R.id.ProfileDescriptionTextButton);
         TodayInfoText = findViewById(R.id.TodayInfoText);
         NoNewsOrEventsText = findViewById(R.id.NoNewsOrEventsText);
+        final LinearLayout header = findViewById(R.id.menuHeader);
+        final ScrollView mainScroll = findViewById(R.id.mainScroll);
         final Button EventsButton = findViewById(R.id.EventsButton);
         final Button NewsButton = findViewById(R.id.NewsButton);
 
+        if(GlobalApplication.loadingCount == 0) {
+            header.setVisibility(View.GONE);
+            mainScroll.setVisibility(View.GONE);
+            Runnable r = new Runnable() {
+                @Override
+                public void run() {
+                    header.setVisibility(View.VISIBLE);
+                    mainScroll.setVisibility(View.VISIBLE);
+                }
+            };
+            Handler h = new Handler();
+            h.postDelayed(r, 3000);
+            GlobalApplication.loadingCount = 1;
+        }
 
 
 
@@ -138,15 +155,15 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        Runnable r = new Runnable() {
+        Runnable r2 = new Runnable() {
             @Override
             public void run(){
                 inflateEvents(); //<-- put your code in here.
             }
         };
 
-        Handler h = new Handler();
-        h.postDelayed(r, 2000);
+        Handler h2 = new Handler();
+        h2.postDelayed(r2, 2000);
 
 
     }

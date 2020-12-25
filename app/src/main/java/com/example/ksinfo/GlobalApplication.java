@@ -43,4 +43,6 @@ public  class GlobalApplication extends Application {
     //хранение изменений
     public static List<Changes> listChanges = new ArrayList<>();
 
+    public static int loadingCount = 0;
+
 }

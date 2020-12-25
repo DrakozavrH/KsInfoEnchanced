@@ -69,7 +69,6 @@ public class LoginActivity extends AppCompatActivity {
     private static final int NOTIFY_ID = 1;
     private static String CHANNEL_ID = "CHANNEL_ID";
     private static String Notif;
-    private static int num = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -98,7 +97,13 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(LoginText.getText().toString().matches("")  || PasswordText.getText().toString().matches("")) {
+                    Toast.makeText(LoginActivity.this, "Не все данные введены", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 signIn(LoginText.getText().toString(), PasswordText.getText().toString());
+
+
 
             }
         });
@@ -113,17 +118,10 @@ public class LoginActivity extends AppCompatActivity {
                 LessonMet();
                 ClassroomsMet();
 
-                final Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                 UserStatic.role = 2;
 
-                Runnable r = new Runnable() {
-                    @Override
-                    public void run(){
-                        startActivity(intent);
-                    }
-                };
-                Handler h = new Handler();
-                h.postDelayed(r, 4000);
+                startActivity(intent);
             }
         });
 
@@ -140,32 +138,31 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signIn(final String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText(LoginActivity.this, "Aвторизация успешна", Toast.LENGTH_SHORT).show();
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(LoginActivity.this, "Aвторизация успешна", Toast.LENGTH_SHORT).show();
 
-                    UserMet();
-                    AdditionalEducationMet();
-                    EventMet();
-                    NewMet();
-                    LessonMet();
-                    ClassroomsMet();
-                    MessageMet();
-                    ChangesMet();
-                    notificationsMet();
+                        UserMet();
+                        AdditionalEducationMet();
+                        EventMet();
+                        NewMet();
+                        LessonMet();
+                        ClassroomsMet();
+                        MessageMet();
+                        ChangesMet();
+                        notificationsMet();
 
 
-                    Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-                    String name = UserStatic.Name;
-                    intent.putExtra("name", name);
-                    startActivity(intent);
-                } else
-                    Toast.makeText(LoginActivity.this, "Aвторизация провалена", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                        startActivity(intent);
+                    } else
+                        Toast.makeText(LoginActivity.this, "Aвторизация провалена", Toast.LENGTH_SHORT).show();
 
-            }
-        });
+                }
+            });
+
     }
     //Прогрузка пользователя
     public void UserMet() {
