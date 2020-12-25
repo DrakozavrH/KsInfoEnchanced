@@ -44,5 +44,6 @@ public  class GlobalApplication extends Application {
     public static List<Changes> listChanges = new ArrayList<>();
 
     public static int loadingCount = 0;
+    public static int UserCount = 0;
 
 }

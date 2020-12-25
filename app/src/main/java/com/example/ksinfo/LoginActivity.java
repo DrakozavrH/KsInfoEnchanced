@@ -120,8 +120,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                 UserStatic.role = 2;
-
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -157,6 +157,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                         startActivity(intent);
+                        finish();
                     } else
                         Toast.makeText(LoginActivity.this, "Aвторизация провалена", Toast.LENGTH_SHORT).show();
 

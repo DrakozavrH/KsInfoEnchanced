@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -80,6 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
         final ScrollView mainScroll = findViewById(R.id.mainScroll);
         final Button EventsButton = findViewById(R.id.EventsButton);
         final Button NewsButton = findViewById(R.id.NewsButton);
+        final ProgressBar progressBar = findViewById(R.id.progressBar);
 
         if(GlobalApplication.loadingCount == 0) {
             header.setVisibility(View.GONE);
@@ -89,12 +91,17 @@ public class ProfileActivity extends AppCompatActivity {
                 public void run() {
                     header.setVisibility(View.VISIBLE);
                     mainScroll.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
                 }
             };
             Handler h = new Handler();
             h.postDelayed(r, 3000);
             GlobalApplication.loadingCount = 1;
-        }
+        }else
+            progressBar.setVisibility(View.GONE);
+
+
+
 
 
 
@@ -251,7 +258,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-            if(intent != null){
+            if(intent != null && GlobalApplication.UserCount == 0){
                 Runnable r = new Runnable() {
                     @Override
                     public void run(){
@@ -261,8 +268,11 @@ public class ProfileActivity extends AppCompatActivity {
                 };
                 Handler h = new Handler();
                 h.postDelayed(r, 2000);
-
-
+                GlobalApplication.UserCount = 1;
+            }
+            else if(GlobalApplication.UserCount == 1){
+                Username = UserStatic.Name;
+                UsernameText.setText(Username);
             }
 
         }else if(UserStatic.role == 2){
